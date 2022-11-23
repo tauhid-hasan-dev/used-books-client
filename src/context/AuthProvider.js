@@ -40,9 +40,9 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
         })
 
-        return () => {
-            return unsubscribe();
-        }
+        /*   return () => {
+              return unsubscribe();
+          } */
     }, [])
 
     const value = { user, createUser, loading, signIn, updateUser, logout, googleSignIn }
