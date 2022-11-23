@@ -4,7 +4,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logout()
+            .then(() => { })
+            .then(err => console.log(err.message))
+    }
     const menuItem = <>
         <NavLink
             to="/"
@@ -24,7 +29,9 @@ const Navbar = () => {
                         isActive ? ' border-b border-logo-color text-text-color  ' : undefined
                     }>Dashboard</NavLink>
 
-                    <Link className='pl-2 lg:pl-4 text-text-color '><button className="hover:bg-slate-600 border px-2    rounded-none ">LogOut</button></Link>
+                    <Link className='pl-2 lg:pl-4 text-text-color '><p>{user?.displayName}</p></Link>
+
+                    <Link className='pl-2 lg:pl-4 text-text-color '><button onClick={handleLogOut} className="hover:bg-slate-600 border px-2    rounded-none ">LogOut</button></Link>
 
                 </>
                 :
