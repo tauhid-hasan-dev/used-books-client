@@ -1,5 +1,7 @@
 import Blog from "../pages/Blog/Blog";
+import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 import Home from "../pages/Home/Home";
+import DashboardLayout from "../pages/layouts/DashboardLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 
@@ -29,5 +31,9 @@ export const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+    }
 
 ])
