@@ -15,15 +15,17 @@ const Categories = () => {
         }
     })
 
-    console.log(categories.length)
+    //console.log(categories.length)
+
     if (isLoading) {
         return <Loading></Loading>
     }
 
-
     return (
         <div className='px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
-            {categories?.map(category => <Link to={`/categories/:id`}><CategoryCard key={category.categoryId} category={category}></CategoryCard></Link>)}
+            {categories?.map(category =>
+                <CategoryCard key={category.categoryId} category={category}></CategoryCard>
+            )}
         </div>
     );
 };

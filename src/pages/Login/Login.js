@@ -1,11 +1,14 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const googleProvider = new GoogleAuthProvider();
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -24,6 +27,19 @@ const Login = () => {
                 toast.error(err.message)
             })
 
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(err => {
+                console.error(err);
+                toast.error(err.message)
+            })
     }
     return (
         <div className="hero bg-bg-login-color">
@@ -63,11 +79,11 @@ const Login = () => {
                         Or
                     </div>
                     <div className='flex flex-row justify-center gap-3 mb-5'>
-                        <button className="btn flex gap-2  bg-nav-color hover:bg-green-800 border-none px-24 rounded-none"> <FaGoogle className='text-3xl'></FaGoogle>Login With Google </button>
+                        <button onClick={handleGoogleSignIn} className="btn flex gap-2  bg-nav-color hover:bg-green-800 border-none px-24 rounded-none"> <FaGoogle className='text-3xl'></FaGoogle>Login With Google </button>
                     </div>
                 </div >
             </div>
-        </div>
+        </div >
     );
 };
 
