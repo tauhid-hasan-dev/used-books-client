@@ -8,7 +8,7 @@ const DashboardLayout = () => {
             <Navbar></Navbar>
             <div className="drawer drawer-mobile px-0 lg:px-28 bg-banner pt-3">
                 <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content pl-5">
+                <div className="drawer-content pl-3">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side  bg-category">
