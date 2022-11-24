@@ -16,7 +16,10 @@ const AddProduct = () => {
         const productName = form.name.value;
         const originalPrice = form.originalprice.value;
         const resalePrice = form.resaleprice.value;
-        console.log(productName, categoryId, condition, originalPrice, resalePrice);
+        const location = form.location.value;
+        const purchaseYear = form.puchaseyear.value;
+        const useOfYear = form.useyear.value;
+        console.log(productName, categoryId, condition, originalPrice, resalePrice, location, purchaseYear, useOfYear);
 
     }
     return (
@@ -61,13 +64,13 @@ const AddProduct = () => {
                                 <label className="label">
                                     <span className="label-text text-text-color text-md">Original Price</span>
                                 </label>
-                                <input type="number" name='originalprice' placeholder="Original price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                                <input type="text" name='originalprice' placeholder="Original price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-text-color text-md">Resale Price</span>
                                 </label>
-                                <input type="number" name='resaleprice' placeholder="Resale price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                                <input type="text" name='resaleprice' placeholder="Resale price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control w-[100%]">
                                 <label className="label">
@@ -79,6 +82,28 @@ const AddProduct = () => {
                                     <option value="Fair" >Fair</option>
                                 </select>
                             </div>
+                        </div>
+                        {/* 3rd row */}
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Location</span>
+                                </label>
+                                <input type="text" name='location' placeholder="Your Location" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Year of purchase</span>
+                                </label>
+                                <input type="text" name='puchaseyear' placeholder="Purchase year" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Years of use</span>
+                                </label>
+                                <input type="text" name='useyear' placeholder="Total year of usage" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                            </div>
+
                         </div>
 
 
