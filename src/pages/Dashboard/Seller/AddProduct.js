@@ -19,7 +19,31 @@ const AddProduct = () => {
         const location = form.location.value;
         const purchaseYear = form.puchaseyear.value;
         const useOfYear = form.useyear.value;
+        const image = form.image.files[0];
         console.log(productName, categoryId, condition, originalPrice, resalePrice, location, purchaseYear, useOfYear);
+
+        const formdata = new FormData();
+        formdata.append('image', image)
+
+        const url = `https://api.imgbb.com/1/upload?key=1357b7af2e2bd0d85c5b8b326f53f9cd`;
+        fetch(url, {
+            method: 'POST',
+            body: formdata
+        })
+            .then(res => res.json())
+            .then(imageData => {
+                if (imageData.success) {
+                    const photo = imageData.data.url;
+                    console.log(photo);
+
+
+                }
+
+
+            })
+            .catch(err => console.log(err.message))
+
+
 
     }
     return (
