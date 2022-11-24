@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
-    const [categoryId, setCategoryId] = useState('00');
-    const [condition, setCondition] = useState('');
+    const [categoryId, setCategoryId] = useState('01');
+    const [condition, setCondition] = useState('Excellent');
     const handleChangeCategory = (event) => {
         setCategoryId(event.target.value);
     };
@@ -14,7 +14,9 @@ const AddProduct = () => {
         event.preventDefault();
         const form = event.target;
         const productName = form.name.value;
-        console.log(productName, categoryId, condition);
+        const originalPrice = form.originalprice.value;
+        const resalePrice = form.resaleprice.value;
+        console.log(productName, categoryId, condition, originalPrice, resalePrice);
 
     }
     return (
@@ -29,25 +31,25 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg">Product Name</span>
+                                    <span className="label-text text-text-color text-md">Product Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="Your Full Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                                <input type="text" name='name' placeholder="Your book name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg">Product Image</span>
+                                    <span className="label-text text-text-color text-md">Product Image</span>
                                 </label>
                                 <input type="file" name='image' className="file-input file-input-bordered file-input-accent text-slate-900 font-semibold rounded-none w-full" />
                             </div>
                             <div className="form-control w-[100%]">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg" >Select Category </span>
+                                    <span className="label-text text-text-color text-md" >Select Category </span>
                                 </label>
                                 <select onChange={handleChangeCategory} className="select select-bordered  text-slate-900 font-semibold rounded-none">
-                                    <option value="01" >Programming </option>
+                                    <option value="01" selected>Programming </option>
                                     <option value="02" >History</option>
-                                    <option value="02" >Self-Development</option>
+                                    <option value="03" >Self-Development</option>
                                 </select>
                             </div>
                         </div>
@@ -57,22 +59,22 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg">Original Price</span>
+                                    <span className="label-text text-text-color text-md">Original Price</span>
                                 </label>
-                                <input type="text" name='originalprice' placeholder="Your Full Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                                <input type="number" name='originalprice' placeholder="Original price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg">Resale Price</span>
+                                    <span className="label-text text-text-color text-md">Resale Price</span>
                                 </label>
-                                <input type="text" name='name' placeholder="Your Full Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                                <input type="number" name='resaleprice' placeholder="Resale price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control w-[100%]">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-lg" >Condition </span>
+                                    <span className="label-text text-text-color text-md" >Condition </span>
                                 </label>
                                 <select onChange={handleChangeCondition} className="select select-bordered  text-slate-900 font-semibold rounded-none">
-                                    <option value="Excellent" >Excellent </option>
+                                    <option value="Excellent" selected>Excellent </option>
                                     <option value="Good" >Good</option>
                                     <option value="Fair" >Fair</option>
                                 </select>
