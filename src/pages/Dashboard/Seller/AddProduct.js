@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const AddProduct = () => {
+    const { user } = useContext(AuthContext)
     const [categoryId, setCategoryId] = useState('01');
     const [condition, setCondition] = useState('Excellent');
+    let today = new Date().toLocaleString();
     const handleChangeCategory = (event) => {
         setCategoryId(event.target.value);
     };
@@ -20,6 +23,8 @@ const AddProduct = () => {
         const purchaseYear = form.puchaseyear.value;
         const useOfYear = form.useyear.value;
         const image = form.image.files[0];
+        const sellerName = form.sellername.value;
+        const sellerPhone = form.sellerphone.value;
         console.log(productName, categoryId, condition, originalPrice, resalePrice, location, purchaseYear, useOfYear);
 
         const formdata = new FormData();
@@ -33,9 +38,35 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(imageData => {
                 if (imageData.success) {
-                    const photo = imageData.data.url;
-                    console.log(photo);
+                    const productImage = imageData.data.url;
+                    console.log(productImage)
+                    const bookInfo = {
+                        categoryId,
+                        productName,
+                        productImage,
+                        location,
+                        originalPrice,
+                        resalePrice,
+                        purchaseYear,
+                        useOfYear,
+                        condition,
+                        dateField: today,
+                        sellerName,
+                        sellerPhone
+                    }
 
+                    //sending book info to the backend 
+                    fetch(`http://localhost:5000/allbooks`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(bookInfo)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                        })
 
                 }
 
@@ -58,14 +89,14 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Product Name</span>
+                                    <span className="label-text text-text-color text-md">Book Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="Your book name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Product Image</span>
+                                    <span className="label-text text-text-color text-md">Book Image</span>
                                 </label>
                                 <input type="file" name='image' className="file-input file-input-bordered file-input-accent text-slate-900 font-semibold rounded-none w-full" />
                             </div>
@@ -129,11 +160,26 @@ const AddProduct = () => {
                             </div>
 
                         </div>
+                        {/*  fourth row */}
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Seller Name</span>
+                                </label>
+                                <input type="text" name='sellername' placeholder="Seller Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" defaultValue={user?.displayName} readOnly required />
+                            </div>
+                            <div className="form-control col-span-2">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Seller phone no</span>
+                                </label>
+                                <input type="text" name='sellerphone' placeholder="Seller Phone No" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                            </div>
+                        </div>
 
 
 
                         <div className="form-control mt-6">
-                            <button type='submit' className="border p-3 text-text-color bg-nav-color hover:bg-green-800  ">Add Product</button>
+                            <button type='submit' className="border rounded  p-3 border-text-color hover:bg-text-color font-semibold hover:border-text-color  hover:text-nav-color   ">Add Product</button>
                         </div>
                     </form>
 
