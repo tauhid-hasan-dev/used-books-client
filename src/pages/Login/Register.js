@@ -2,18 +2,22 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 
 const Register = () => {
-    const { createUser, updateUser, logout, googleSignIn } = useContext(AuthContext);
+    const { createUser, updateUser, logout, googleSignIn, verifyEmail } = useContext(AuthContext);
+    let location = useLocation();
+
     const [role, setRole] = useState("buyer");
     const navigate = useNavigate()
     const handleChange = (event) => {
         setRole(event.target.value);
     };
     const googleProvider = new GoogleAuthProvider();
+
+    let from = location.state?.from?.pathname || "/";
 
 
     const handleSignUp = (event) => {
@@ -29,9 +33,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 updateUserInfo(name);
-                logout()
-                toast.success(`Your are registered as a ${role}, Please login now`)
-                navigate('/login')
+                /* toast.success(`Your are registered as a ${role}, Please login now`) */
                 console.log(user);
             })
             .catch(err => {
@@ -45,16 +47,30 @@ const Register = () => {
             displayName: name,
         }
         updateUser(profile)
-            .then(() => { })
+            .then(() => {
+                verifyUserEmail()
+            })
             .catch(e => console.log(e.message))
     }
+
+    const verifyUserEmail = () => {
+        verifyEmail()
+            .then(() => {
+                toast.success('Your are Registered, Please check your email for verification');
+                navigate('/login')
+                logout();
+            })
+            .catch(err => console.log(err.message))
+    }
+
+
 
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(err);
