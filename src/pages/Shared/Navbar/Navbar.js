@@ -29,11 +29,11 @@ const Navbar = () => {
                         isActive ? '  text-text-color  ' : undefined
                     }>Dashboard</NavLink>
 
-                    <Link className='pl-2 lg:pl-4 text-text-color '><button onClick={handleLogOut} className="px-3 py-1 hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color border-text-color   rounded ">LogOut</button></Link>
+                    <Link className='pl-2 lg:pl-2 text-text-color '><button onClick={handleLogOut} className="px-3 py-1 hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color border-text-color   rounded ">LogOut</button></Link>
 
                 </>
                 :
-                <Link to='/login' className='pl-2 lg:pl-4 text-text-color  '><button className="px-3 py-1 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color    rounded">LogIn</button></Link>
+                <Link to='/login' className='pl-2 lg:pl-2 text-text-color  '><button className="px-3 py-1 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color    rounded">LogIn</button></Link>
         }
 
     </>

@@ -2,13 +2,16 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
-    const navigate = useNavigate()
     const googleProvider = new GoogleAuthProvider();
+    let location = useLocation();
+    const navigate = useNavigate();
+
+    let from = location.state?.from?.pathname || "/";
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -20,8 +23,8 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-
                 console.log(user)
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 toast.error(err.message)
@@ -34,7 +37,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(err);
@@ -45,7 +48,7 @@ const Login = () => {
         <div className="hero bg-bg-login-color">
             <div className="hero-content flex-col  lg:flex-row">
                 <div className='px-5 lg:px-20  py-10  flex flex-col items-center text-black '>
-                    <form onSubmit={handleSignIn} className="p-7 lg:p-10  rounded-none border-nav-color border-2  w-[350px]   lg:w-[450px] border " >
+                    <form onSubmit={handleSignIn} className="p-7 lg:p-10  rounded-none border-nav-color border-2  w-[350px]   lg:w-[450px]  " >
                         <p className='text-center text-2xl  font-semibold'>Login</p>
 
                         <div className="form-control">
