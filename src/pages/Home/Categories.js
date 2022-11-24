@@ -22,10 +22,15 @@ const Categories = () => {
     }
 
     return (
-        <div className='bg-category py-5 lg:py-20 px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
-            {categories?.map(category =>
-                <CategoryCard key={category.categoryId} category={category}></CategoryCard>
-            )}
+        <div className='bg-category'>
+            <div className='flex justify-center pt-8 pb-5 lg:pb-0 lg:pt-14'>
+                <p className='text-4xl text-white font-semibold'>Categories</p>
+            </div>
+            <div className='pb-5 pt-5 lg:pt-14 lg:pb-20 px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
+                {categories?.map(category =>
+                    <CategoryCard key={category.categoryId} category={category}></CategoryCard>
+                )}
+            </div>
         </div>
     );
 };
