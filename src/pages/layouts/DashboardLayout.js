@@ -15,7 +15,7 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-white ">
                         <li><NavLink
-                            to="/dashboard"
+                            to="/dashboard/myorders"
                             className={({ isActive }) =>
                                 isActive ? '  text-text-color ' : undefined
                             }
