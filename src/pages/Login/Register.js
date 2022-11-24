@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, logout } = useContext(AuthContext);
     const [role, setRole] = useState("buyer");
+    const navigate = useNavigate()
     const handleChange = (event) => {
         setRole(event.target.value);
     };
@@ -26,6 +27,9 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 updateUserInfo(name);
+                logout()
+                toast.success(`Your are registered as a ${role}, Please login now`)
+                navigate('/login')
                 console.log(user);
             })
             .catch(err => {

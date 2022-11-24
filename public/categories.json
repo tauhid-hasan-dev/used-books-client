@@ -1,0 +1,17 @@
+[
+    {
+        "categoryId": "01",
+        "img": "http://placehold.it/32x32",
+        "categoryName": "Programming"
+    },
+    {
+        "categoryId": "02",
+        "img": "http://placehold.it/32x32",
+        "categoryName": "History"
+    },
+    {
+        "categoryId": "03",
+        "img": "http://placehold.it/32x32",
+        "categoryName": "Islamic"
+    }
+]
