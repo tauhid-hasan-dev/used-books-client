@@ -1,4 +1,5 @@
 import Blog from "../pages/Blog/Blog";
+import CategoryBooks from "../pages/CategoryBooks/CategoryBooks";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 import Home from "../pages/Home/Home";
 import DashboardLayout from "../pages/layouts/DashboardLayout";
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>,
             },
+            {
+                path: '/categories/:categoryId',
+                element: <CategoryBooks></CategoryBooks>
+            }
         ]
     },
     {

@@ -11,7 +11,7 @@ const CategoryCard = ({ category }) => {
                     <div className="card-body">
                         <h2 className="card-title text-bold text-3xl  justify-start">{categoryName}</h2>
                         <p></p>
-                        <div className="card-actions justify-end ">
+                        <div className="card-actions justify-starts ">
                             <Link to={`/categories/${categoryId}`} ><button className="text-text-color px-5 py-3 hover:bg-text-color font-semibold hover:border-none border-text-color  border hover:text-nav-color    rounded">See Books</button></Link>
                         </div>
                     </div>

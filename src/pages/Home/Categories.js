@@ -22,7 +22,7 @@ const Categories = () => {
     }
 
     return (
-        <div className='px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
+        <div className='bg-category py-5 lg:py-20 px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
             {categories?.map(category =>
                 <CategoryCard key={category.categoryId} category={category}></CategoryCard>
             )}
