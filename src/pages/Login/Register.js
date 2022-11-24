@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
@@ -6,12 +7,13 @@ import { AuthContext } from '../../context/AuthProvider';
 
 
 const Register = () => {
-    const { createUser, updateUser, logout } = useContext(AuthContext);
+    const { createUser, updateUser, logout, googleSignIn } = useContext(AuthContext);
     const [role, setRole] = useState("buyer");
     const navigate = useNavigate()
     const handleChange = (event) => {
         setRole(event.target.value);
     };
+    const googleProvider = new GoogleAuthProvider();
 
 
     const handleSignUp = (event) => {
@@ -45,6 +47,19 @@ const Register = () => {
         updateUser(profile)
             .then(() => { })
             .catch(e => console.log(e.message))
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(err => {
+                console.error(err);
+                toast.error(err.message)
+            })
     }
 
 
@@ -109,7 +124,7 @@ const Register = () => {
                         Or
                     </div>
                     <div className='flex flex-row justify-center gap-3 mb-5'>
-                        <button className="btn flex gap-2  bg-nav-color hover:bg-green-800 border-none px-24 rounded-none"> <FaGoogle className='text-3xl'></FaGoogle>Login With Google </button>
+                        <button onClick={handleGoogleSignIn} className="btn flex gap-2  bg-nav-color hover:bg-green-800 border-none px-24 rounded-none"> <FaGoogle className='text-3xl'></FaGoogle>Login With Google </button>
                     </div>
                 </div >
             </div>
