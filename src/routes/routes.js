@@ -38,9 +38,9 @@ export const router = createBrowserRouter([
                 element: <Register></Register>,
             },
             {
-                path: '/categories/:id',
+                path: '/categories/:categoryId',
                 element: <PrivateRoute><CategoryBooks></CategoryBooks></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.categoryId}`)
             }
         ]
     },
