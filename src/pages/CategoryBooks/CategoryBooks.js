@@ -9,10 +9,10 @@ const CategoryBooks = () => {
     return (
         <div className='bg-banner ' >
             <div className='flex justify-center py-10'>
-                <p className='text-2xl font-semibold text-white'>Total book found in this category: {books.length}</p>
+                <p className='text-2xl font-semibold text-white'>Total {books.length} book found in this category</p>
             </div>
 
-            <div className=' grid grid-cols-3 gap-10 px-28 pb-16 pt-10'>
+            <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 lg:px-28 pb-16 pt-10'>
                 {
                     books?.map(book => <BookCard key={book._id} book={book}></BookCard>)
                 }

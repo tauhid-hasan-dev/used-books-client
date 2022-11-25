@@ -27,6 +27,7 @@ const AddProduct = () => {
         const image = form.image.files[0];
         const sellerName = form.sellername.value;
         const sellerPhone = form.sellerphone.value;
+        const sellerEmail = form.email.value;
         console.log(productName, categoryId, condition, originalPrice, resalePrice, location, purchaseYear, useOfYear);
 
         const formdata = new FormData();
@@ -54,7 +55,8 @@ const AddProduct = () => {
                         condition,
                         dateField: today,
                         sellerName,
-                        sellerPhone
+                        sellerPhone,
+                        sellerEmail
                     }
 
                     //sending book info to the backend 
@@ -175,11 +177,17 @@ const AddProduct = () => {
                                 </label>
                                 <input type="text" name='sellername' placeholder="Seller Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" defaultValue={user?.displayName} readOnly required />
                             </div>
-                            <div className="form-control col-span-2">
+                            <div className="form-control ">
                                 <label className="label">
                                     <span className="label-text text-text-color text-md">Seller phone no</span>
                                 </label>
                                 <input type="text" name='sellerphone' placeholder="Seller Phone No" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
+                            </div>
+                            <div className="form-control ">
+                                <label className="label">
+                                    <span className="label-text text-text-color text-md">Seller Email</span>
+                                </label>
+                                <input type="text" name='email' placeholder="Seller Email" className="input input-bordered  text-slate-900 font-semibold rounded-none" readOnly required defaultValue={user?.email} />
                             </div>
                         </div>
 
