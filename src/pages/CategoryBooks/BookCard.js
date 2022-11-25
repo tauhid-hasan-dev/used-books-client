@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import BookingModal from '../Shared/Booking Modal/BookingModal';
 
 const BookCard = ({ book }) => {
     const {
@@ -17,6 +18,8 @@ const BookCard = ({ book }) => {
         sellerPhone,
         _id
     } = book;
+
+    const [booking, setBooking] = useState(null)
 
     return (
         <div className="bg-category border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none ">
@@ -60,9 +63,14 @@ const BookCard = ({ book }) => {
             </div>
 
             <div className="py-3 px-3 flex gap-5 justify-between">
-                <Link ><button className="text-text-color  w-full px-6 lg:px-12 py-2 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color rounded">Book Now</button></Link>
-                <Link ><button className="text-text-color  w-full px-4 lg:px-8 py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
+                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn bg-banner btn-sm  text-text-color  w-[50%] px-6 lg:px-12 py-2 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color rounded">Book Now</label>
+                <Link ><button className="btn btn-sm bg-banner   text-text-color  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
+                {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
             </div>
+
+            {booking &&
+                <BookingModal key={book._id} book={book} setBooking={setBooking}></BookingModal>
+            }
         </div>
     );
 };
