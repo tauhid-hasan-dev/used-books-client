@@ -11,6 +11,8 @@ import Home from "../pages/Home/Home";
 import DashboardLayout from "../pages/layouts/DashboardLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
+import ErrorElement from "../pages/NotFound/ErrorElement";
+import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: '/',
@@ -40,6 +43,7 @@ export const router = createBrowserRouter([
             {
                 path: '/categories/:categoryId',
                 element: <PrivateRoute><CategoryBooks></CategoryBooks></PrivateRoute>,
+                errorElement: <ErrorElement></ErrorElement>,
                 loader: ({ params }) => fetch(`http://localhost:5000/books/${params.categoryId}`)
             }
         ]
@@ -47,6 +51,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: '/dashboard',
@@ -78,6 +83,7 @@ export const router = createBrowserRouter([
             },
 
         ]
-    }
+    },
+    { path: '*', element: <NotFound></NotFound> }
 
 ])
