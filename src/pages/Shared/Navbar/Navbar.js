@@ -33,7 +33,7 @@ const Navbar = () => {
 
                 </>
                 :
-                <Link to='/login' className='pl-2 lg:pl-2 text-text-color  '><button className="px-3 py-1 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color    rounded">LogIn</button></Link>
+                <Link to='/login' className='pl-2 lg:pl-2 text-text-color  '><button className="px-3 py-1 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color rounded">LogIn</button></Link>
         }
 
     </>
