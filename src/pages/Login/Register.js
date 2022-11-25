@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 
 
 const Register = () => {
-    const { createUser, updateUser, logout, googleSignIn, verifyEmail } = useContext(AuthContext);
+    const { createUser, updateUser, logout, googleSignIn } = useContext(AuthContext);
     let location = useLocation();
 
     const [role, setRole] = useState("buyer");
@@ -32,7 +32,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                updateUserInfo(name);
+                updateUserInfo(name, email);
                 /* toast.success(`Your are registered as a ${role}, Please login now`) */
                 console.log(user);
             })
@@ -42,28 +42,39 @@ const Register = () => {
             })
     }
 
-    const updateUserInfo = (name) => {
+    const updateUserInfo = (name, email) => {
         const profile = {
             displayName: name,
         }
         updateUser(profile)
             .then(() => {
-                verifyUserEmail()
+                toast.success('Your are Registered, Please Login now');
+
+                const user = {
+                    name,
+                    email,
+                    userRole: role,
+                }
+
+                //sending book info to the backend 
+                fetch(`http://localhost:5000/users`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+
+                logout();
+                navigate('/login')
+
             })
             .catch(e => console.log(e.message))
     }
-
-    const verifyUserEmail = () => {
-        verifyEmail()
-            .then(() => {
-                toast.success('Your are Registered, Please check your email for verification');
-                navigate('/login')
-                logout();
-            })
-            .catch(err => console.log(err.message))
-    }
-
-
 
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)

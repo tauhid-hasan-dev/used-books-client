@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
@@ -6,6 +7,7 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext)
     const [categoryId, setCategoryId] = useState('01');
     const [condition, setCondition] = useState('Excellent');
+    const navigate = useNavigate()
     let today = new Date().toLocaleString();
     const handleChangeCategory = (event) => {
         setCategoryId(event.target.value);
@@ -65,7 +67,12 @@ const AddProduct = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            if (data.acknowledged) {
+                                toast.success(`Congrats! ${productName} added to your book list`)
+                                navigate('/dashboard/myproducts');
+                                console.log(data);
+                            }
+
                         })
 
                 }
