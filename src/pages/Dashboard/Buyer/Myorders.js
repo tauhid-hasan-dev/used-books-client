@@ -1,18 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider';
+import Loading from '../../../Loader/Loading';
 
 
 
 const Myorders = () => {
+    const { user } = useContext(AuthContext);
 
-    const { data: bookings = [], isLoading, refetch } = useQuery({
+    const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings`)
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
     })
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     console.log(bookings.length)
 
@@ -41,7 +48,7 @@ const Myorders = () => {
                                 <td className='bg-category text-white'>{booking?.productName}</td>
                                 <td className='bg-category text-white'>${booking?.productPrice}</td>
                                 <td className='bg-category text-white'>
-                                    <label htmlFor="confirmation-modal" className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Pay</label>
+                                    <label htmlFor="confirmation-modal" className="btn btn-sm  bg-nav-color hover:bg-green-800 border-none">Pay</label>
                                 </td>
                             </tr>)
                         }
