@@ -8,6 +8,8 @@ const Moto = () => {
             </div>
             <div className='flex w-[100%] lg:w-[50%] flex-col items-center justify-center lg:items-start gap-10 order-1 lg:order-0 '>
                 <div className='flex flex-col gap-5 justify-end text-center lg:text-start'>
+                    <h1 className='text-text-color text-3xl lg:text-3xl font-bold'>Our Moto</h1>
+
                     <h1 className='text-white text-3xl lg:text-5xl font-bold'>We believe in Rising Together</h1>
                     <h1 className='text-slate-300 text-lg lg:text-xl font-regular'>Books should be available for everyone</h1>
                 </div>

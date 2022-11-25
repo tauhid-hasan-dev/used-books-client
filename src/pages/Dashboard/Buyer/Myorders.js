@@ -22,26 +22,26 @@ const Myorders = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th>No</th>
-                            <th>Image</th>
-                            <th>Book Name</th>
-                            <th>Price</th>
-                            <th>Payment Status</th>
+                            <th className='bg-nav-color text-white'>No</th>
+                            <th className='bg-nav-color text-white'>Image</th>
+                            <th className='bg-nav-color text-white'>Book Name</th>
+                            <th className='bg-nav-color text-white'>Price</th>
+                            <th className='bg-nav-color text-white'>Payment Status</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-banner'>
                         {
                             bookings.map((booking, i) => <tr key={booking._id}>
-                                <th>{i + 1}</th>
-                                <td><div className="avatar">
+                                <th className='bg-category text-white'>{i + 1}</th>
+                                <td className='bg-category text-white'><div className="avatar">
                                     <div className="w-14 ">
                                         <img src={booking?.productImage} alt="" />
                                     </div>
                                 </div></td>
-                                <td>{booking?.productName}</td>
-                                <td>${booking?.productPrice}</td>
-                                <td>
-                                    <label htmlFor="confirmation-modal" className="btn btn-sm bg-banner hover:bg-category border-none">Pay</label>
+                                <td className='bg-category text-white'>{booking?.productName}</td>
+                                <td className='bg-category text-white'>${booking?.productPrice}</td>
+                                <td className='bg-category text-white'>
+                                    <label htmlFor="confirmation-modal" className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Pay</label>
                                 </td>
                             </tr>)
                         }
