@@ -38,7 +38,8 @@ const Myorders = () => {
                             <th className='bg-nav-color text-white'>Image</th>
                             <th className='bg-nav-color text-white'>Book Name</th>
                             <th className='bg-nav-color text-white'>Price</th>
-                            <th className='bg-nav-color text-white'>Payment Status</th>
+
+                            <th className='bg-nav-color text-white text-center'>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
@@ -52,7 +53,8 @@ const Myorders = () => {
                                 </div></td>
                                 <td className='bg-category text-white'>{booking?.productName}</td>
                                 <td className='bg-category text-white'>${booking?.productPrice}</td>
-                                <td className='bg-category text-white'>
+
+                                <td className='bg-category text-white text-center'>
                                     <label htmlFor="confirmation-modal" className="btn btn-sm  bg-nav-color hover:bg-green-800 border-none">Pay</label>
                                 </td>
                             </tr>)

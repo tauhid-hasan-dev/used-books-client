@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
+import useAdmin from '../../hooks/useAdmin';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -32,25 +36,27 @@ const DashboardLayout = () => {
                                 isActive ? '  text-text-color ' : undefined
                             }
                         >Add Product</NavLink></li>
-                        <li><NavLink
-                            to="/dashboard/allseller"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >All Seller</NavLink></li>
+                        {isAdmin && <>
+                            <li><NavLink
+                                to="/dashboard/allseller"
+                                className={({ isActive }) =>
+                                    isActive ? '  text-text-color ' : undefined
+                                }
+                            >All Seller</NavLink></li>
 
-                        <li><NavLink
-                            to="/dashboard/allbuyer"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >All Buyers</NavLink></li>
-                        <li><NavLink
-                            to="/dashboard/reporteditems"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >Reported Items</NavLink></li>
+                            <li><NavLink
+                                to="/dashboard/allbuyer"
+                                className={({ isActive }) =>
+                                    isActive ? '  text-text-color ' : undefined
+                                }
+                            >All Buyers</NavLink></li>
+                            <li><NavLink
+                                to="/dashboard/reporteditems"
+                                className={({ isActive }) =>
+                                    isActive ? '  text-text-color ' : undefined
+                                }
+                            >Reported Items</NavLink></li>
+                        </>}
 
 
                     </ul>
