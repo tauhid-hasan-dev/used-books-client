@@ -43,6 +43,7 @@ const Login = () => {
         googleSignIn(googleProvider)
             .then(result => {
                 const user = result.user;
+
                 const userInfo = {
                     name: user?.displayName,
                     email: user?.email,
@@ -61,7 +62,16 @@ const Login = () => {
                         console.log(data);
                     })
                 console.log(user);
-                navigate(from, { replace: true });
+
+                fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.accessToken) {
+                            localStorage.setItem('usedBooksToken', data.accessToken);
+                            navigate(from, { replace: true });
+                        }
+                    })
+
             })
             .catch(err => {
                 console.error(err);

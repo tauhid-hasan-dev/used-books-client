@@ -12,21 +12,25 @@ const Register = () => {
     let location = useLocation();
     const [role, setRole] = useState("buyer");
     const navigate = useNavigate()
+
+    //getting option value on change
     const handleChange = (event) => {
         setRole(event.target.value);
     };
-    /* const [registerEmail, setRegisterEmail] = useState('')
-    const [token] = useToken(registerEmail); */
+
+    //receiving token from backend by useToken hook.
+    const [registerEmail, setRegisterEmail] = useState('')
+    const [token] = useToken(registerEmail);
 
     const googleProvider = new GoogleAuthProvider();
 
     let from = location.state?.from?.pathname || "/";
 
-    /* if (token) {
-        navigate('/login')
-    } */
+    if (token) {
+        navigate('/')
+    }
 
-
+    //sign up with email and password
     const handleSignUp = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -56,7 +60,7 @@ const Register = () => {
         updateUser(profile)
             .then(() => {
                 toast.success('Your are Registered, Please Login now');
-                
+                setRegisterEmail(email)
                 const userInfo = {
                     name,
                     email,
@@ -83,10 +87,12 @@ const Register = () => {
             .catch(e => console.log(e.message))
     }
 
+    //sign in with google
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then(result => {
                 const user = result.user;
+                setRegisterEmail(user?.email)
                 const userInfo = {
                     name: user?.displayName,
                     email: user?.email,
@@ -106,7 +112,15 @@ const Register = () => {
                         console.log(data);
                     })
 
-                navigate(from, { replace: true });
+                //jwt saving in client 
+                fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.accessToken) {
+                            localStorage.setItem('usedBooksToken', data.accessToken);
+                            navigate(from, { replace: true });
+                        }
+                    })
             })
             .catch(err => {
                 console.error(err);
