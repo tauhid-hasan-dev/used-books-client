@@ -24,6 +24,7 @@ const Allsellers = () => {
                             <th className='bg-nav-color text-white'>No</th>
                             <th className='bg-nav-color text-white'>Name</th>
                             <th className='bg-nav-color text-white'>Email</th>
+                            <th className='bg-nav-color text-white'>Verify</th>
                             <th className='bg-nav-color text-white'>Delete</th>
                         </tr>
                     </thead>
@@ -33,6 +34,9 @@ const Allsellers = () => {
                                 <th className='bg-category text-white'>{i + 1}</th>
                                 <td className='bg-category text-white'>{seller?.name}</td>
                                 <td className='bg-category text-white'>{seller?.email}</td>
+                                <td className='bg-category text-white'>
+                                    <label className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Unverified</label>
+                                </td>
                                 <td className='bg-category text-white'>
                                     <label className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
                                 </td>
