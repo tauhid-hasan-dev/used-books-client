@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react';
 
 const CheckoutForm = ({ booking }) => {
     const [cardError, setCardError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState("");
+    const [success, setSucess] = useState('');
+    const [transactionId, setTransactionId] = useState('')
     const { productPrice, _id, buyerName, buyerEmail
     } = booking;
+
+
 
     //2(after creating api from backend)
     useEffect(() => {
@@ -35,17 +40,20 @@ const CheckoutForm = ({ booking }) => {
             return;
         }
 
-        //1
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
-        //1
+
         if (error) {
             setCardError(error.message)
+        } else {
+            setCardError('')
         }
-
+        setSucess('')
+        setIsLoading(true)
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -64,13 +72,41 @@ const CheckoutForm = ({ booking }) => {
             return
         }
 
-        console.log('payemten', paymentIntent);
+
+
+        if (paymentIntent.status === "succeeded") {
+
+
+            //store payment data to the backend
+            const payment = {
+                productPrice,
+                transactionId: paymentIntent.id,
+                buyerEmail,
+                bookingId: _id
+            }
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSucess('Congratulations! Your Payment is successful');
+                        setTransactionId(paymentIntent.id)
+                    }
+                })
+        }
+
+        setIsLoading(false)
 
     }
 
     return (
         <>
-            <p>this issi ssi</p>
             {/* //paste it from github(1) */}
             <form className='bg-white p-5' onSubmit={handleSubmit}>
                 <CardElement
@@ -89,11 +125,17 @@ const CheckoutForm = ({ booking }) => {
                         },
                     }}
                 />
-                <button className='bg-green-500 mt-5 px-5 ' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='bg-green-500 mt-5 px-5 ' type="submit" disabled={!stripe || !clientSecret || isLoading}>
                     Pay
                 </button>
             </form>
             <p className='text-red-500 font-semibold mt-5'>{cardError}</p>
+            {
+                success && <div>
+                    <p className='text-green-500'>{success}</p>
+                    <p  >Your transaction Id : <span className='font-semibold'>{transactionId}</span></p>
+                </div>
+            }
 
         </>
     );
