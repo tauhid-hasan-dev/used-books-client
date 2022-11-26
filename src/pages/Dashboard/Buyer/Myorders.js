@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loading from '../../../Loader/Loading';
 
@@ -55,7 +56,8 @@ const Myorders = () => {
                                 <td className='bg-category text-white'>${booking?.productPrice}</td>
 
                                 <td className='bg-category text-white text-center'>
-                                    <label htmlFor="confirmation-modal" className="btn btn-sm  bg-nav-color hover:bg-green-800 border-none">Pay</label>
+                                    {booking?.productPrice && !booking?.paid && <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm  bg-nav-color hover:bg-green-800 border-none'>Pay</button></Link>}
+                                    {booking?.productPrice && booking?.paid && <span className='font-bold text-green-600 '>Paid</span>}
                                 </td>
                             </tr>)
                         }
