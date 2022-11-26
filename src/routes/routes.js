@@ -14,6 +14,7 @@ import Register from "../pages/Login/Register";
 import ErrorElement from "../pages/NotFound/ErrorElement";
 import NotFound from "../pages/NotFound/NotFound";
 import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 
@@ -61,7 +62,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myorders',
-                element: <Myorders></Myorders>
+                element: <BuyerRoute><Myorders></Myorders></BuyerRoute>
             },
             {
                 path: '/dashboard/myproducts',

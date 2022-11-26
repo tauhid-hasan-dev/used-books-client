@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
+import useBuyer from '../../hooks/useBuyer';
 import useSeller from '../../hooks/useSeller';
 import Navbar from '../Shared/Navbar/Navbar';
 
@@ -9,7 +10,7 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
-    /* const [isBuyer] = useBuyer(user?.email); */
+    const [isBuyer] = useBuyer(user?.email);
     return (
         <div>
             <Navbar></Navbar>
@@ -21,12 +22,14 @@ const DashboardLayout = () => {
                 <div className="drawer-side  bg-category">
                     <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-white ">
-                        <li><NavLink
-                            to="/dashboard/myorders"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >My Orders</NavLink></li>
+                        {
+                            isBuyer && <li><NavLink
+                                to="/dashboard/myorders"
+                                className={({ isActive }) =>
+                                    isActive ? '  text-text-color ' : undefined
+                                }
+                            >My Orders</NavLink></li>
+                        }
                         {
                             isSeller && <>
                                 <li><NavLink
