@@ -15,6 +15,7 @@ import ErrorElement from "../pages/NotFound/ErrorElement";
 import NotFound from "../pages/NotFound/NotFound";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../pages/layouts/Main");
@@ -64,11 +65,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProuducts></MyProuducts>
+                element: <SellerRoute><MyProuducts></MyProuducts></SellerRoute>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/allseller',

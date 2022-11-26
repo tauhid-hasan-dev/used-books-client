@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
+import useSeller from '../../hooks/useSeller';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email);
-    /* const [isSeller] = useSeller(user?.email);
-    const [isBuyer] = useBuyer(user?.email); */
+    const [isSeller] = useSeller(user?.email);
+    /* const [isBuyer] = useBuyer(user?.email); */
     return (
         <div>
             <Navbar></Navbar>
@@ -26,18 +27,22 @@ const DashboardLayout = () => {
                                 isActive ? '  text-text-color ' : undefined
                             }
                         >My Orders</NavLink></li>
-                        <li><NavLink
-                            to="/dashboard/myproducts"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >My Products</NavLink></li>
-                        <li><NavLink
-                            to="/dashboard/addproduct"
-                            className={({ isActive }) =>
-                                isActive ? '  text-text-color ' : undefined
-                            }
-                        >Add Product</NavLink></li>
+                        {
+                            isSeller && <>
+                                <li><NavLink
+                                    to="/dashboard/myproducts"
+                                    className={({ isActive }) =>
+                                        isActive ? '  text-text-color ' : undefined
+                                    }
+                                >My Products</NavLink></li>
+                                <li><NavLink
+                                    to="/dashboard/addproduct"
+                                    className={({ isActive }) =>
+                                        isActive ? '  text-text-color ' : undefined
+                                    }
+                                >Add Product</NavLink></li>
+                            </>
+                        }
                         {isAdmin && <>
                             <li><NavLink
                                 to="/dashboard/allseller"
