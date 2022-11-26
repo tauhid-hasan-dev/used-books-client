@@ -13,6 +13,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 import ErrorElement from "../pages/NotFound/ErrorElement";
 import NotFound from "../pages/NotFound/NotFound";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -71,15 +72,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allseller',
-                element: <Allsellers></Allsellers>
+                element: <AdminRoute><Allsellers></Allsellers></AdminRoute>
             },
             {
                 path: '/dashboard/allbuyer',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/reporteditems',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
 
         ]
