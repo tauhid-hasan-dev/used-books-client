@@ -7,7 +7,9 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const handleLogOut = () => {
         logout()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem("usedBooksToken");
+            })
             .then(err => console.log(err.message))
     }
     const menuItem = <>
