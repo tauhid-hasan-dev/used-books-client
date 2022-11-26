@@ -4,20 +4,27 @@ import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 
 const Register = () => {
     const { createUser, updateUser, logout, googleSignIn } = useContext(AuthContext);
     let location = useLocation();
-
     const [role, setRole] = useState("buyer");
     const navigate = useNavigate()
     const handleChange = (event) => {
         setRole(event.target.value);
     };
+    /* const [registerEmail, setRegisterEmail] = useState('')
+    const [token] = useToken(registerEmail); */
+
     const googleProvider = new GoogleAuthProvider();
 
     let from = location.state?.from?.pathname || "/";
+
+    /* if (token) {
+        navigate('/login')
+    } */
 
 
     const handleSignUp = (event) => {
@@ -49,7 +56,8 @@ const Register = () => {
         updateUser(profile)
             .then(() => {
                 toast.success('Your are Registered, Please Login now');
-                const user = {
+                
+                const userInfo = {
                     name,
                     email,
                     userRole: role,
@@ -61,15 +69,15 @@ const Register = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(userInfo)
                 })
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
                     })
 
-                logout();
-                navigate('/login')
+
+
 
             })
             .catch(e => console.log(e.message))
