@@ -9,7 +9,7 @@ const CheckoutForm = ({ booking }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [success, setSucess] = useState('');
     const [transactionId, setTransactionId] = useState('')
-    const { productPrice, _id, buyerName, buyerEmail
+    const { productPrice, _id, buyerName, buyerEmail, sellerPostId
     } = booking;
 
 
@@ -76,13 +76,13 @@ const CheckoutForm = ({ booking }) => {
 
         if (paymentIntent.status === "succeeded") {
 
-
             //store payment data to the backend
             const payment = {
                 productPrice,
                 transactionId: paymentIntent.id,
                 buyerEmail,
-                bookingId: _id
+                bookingId: _id,
+                sellerPostId: sellerPostId
             }
             fetch('http://localhost:5000/payments', {
                 method: 'POST',

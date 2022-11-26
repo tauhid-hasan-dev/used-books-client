@@ -1,10 +1,15 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Loading from '../../Loader/Loading';
 import BookCard from './BookCard';
 
 const CategoryBooks = () => {
 
     const books = useLoaderData();
+    const navigation = useNavigation();
+    if (navigation.state === "loading") {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='bg-banner ' >

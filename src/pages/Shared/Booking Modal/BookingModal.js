@@ -24,7 +24,8 @@ const BookingModal = ({ setBooking, book }) => {
             buyerEmail,
             buyerPhone,
             meetingLocation,
-            productImage: book?.productImage
+            productImage: book?.productImage,
+            sellerPostId: book?._id
         }
 
         //sending booking info 

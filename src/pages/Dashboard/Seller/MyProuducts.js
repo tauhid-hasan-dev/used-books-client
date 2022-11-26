@@ -47,13 +47,17 @@ const MyProuducts = () => {
                                 <td className='bg-category text-white'>{book?.productName}</td>
                                 <td className='bg-category text-white'>${book?.resalePrice}</td>
                                 <td className='bg-category text-white'>
-                                    <label /* onClick={() => setDeletingDoctor(doctor)} */ htmlFor="confirmation-modal" className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Available</label>
+                                    {book?.paid ? <p>sold</p> : <label className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Available</label>}
+                                </td>
+
+                                <td className='bg-category text-white'>
+                                    {
+                                        book?.paid ? '' : <label className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Advertise</label>
+                                    }
+
                                 </td>
                                 <td className='bg-category text-white'>
-                                    <label /* onClick={() => setDeletingDoctor(doctor)} */ htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
-                                </td>
-                                <td className='bg-category text-white'>
-                                    <label /* onClick={() => setDeletingDoctor(doctor)} */ htmlFor="confirmation-modal" className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Advertise</label>
+                                    <label className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>)
                         }
