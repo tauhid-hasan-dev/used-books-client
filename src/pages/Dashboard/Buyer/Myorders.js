@@ -4,15 +4,20 @@ import { AuthContext } from '../../../context/AuthProvider';
 import Loading from '../../../Loader/Loading';
 
 
-
 const Myorders = () => {
     const { user } = useContext(AuthContext);
 
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('usedBooksToken')}`
+                }
+            })
+            console.log(res)
             const data = await res.json();
+            console.log(data);
             return data;
         }
     })
