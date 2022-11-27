@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Loading from '../../Loader/Loading';
@@ -22,6 +23,7 @@ const BookCard = ({ book }) => {
         sellerName,
         sellerPhone,
         sellerEmail,
+        _id
 
     } = book;
 
@@ -35,7 +37,21 @@ const BookCard = ({ book }) => {
     })
 
 
-    console.log(seller?.verified)
+    //console.log(seller?.verified)
+
+    const handleReportedItem = (id) => {
+        fetch(`http://localhost:5000/reported/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    toast.success(`Reported To admin`)
+
+                }
+            })
+    }
 
 
 
@@ -97,14 +113,15 @@ const BookCard = ({ book }) => {
 
             <div className="py-3 px-3 flex gap-5 justify-between">
                 <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn bg-banner btn-sm  text-text-color  lg:w-[50%] px-6 lg:px-6 py-2 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color rounded">Book Now</label>
-                <Link ><button className="btn btn-sm bg-banner   text-text-color  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
+                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-sm bg-banner   text-text-color  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
                 {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
             </div>
 
-            {booking &&
+            {
+                booking &&
                 <BookingModal key={book._id} book={book} setBooking={setBooking}></BookingModal>
             }
-        </div>
+        </div >
     );
 };
 

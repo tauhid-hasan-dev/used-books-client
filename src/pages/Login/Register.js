@@ -59,7 +59,7 @@ const Register = () => {
         }
         updateUser(profile)
             .then(() => {
-                toast.success('Your are Registered, Please Login now');
+                toast.success('Your are Registered!');
                 setRegisterEmail(email)
                 const userInfo = {
                     name,

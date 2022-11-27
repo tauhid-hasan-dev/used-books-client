@@ -25,7 +25,7 @@ const Home = () => {
             <Banner></Banner>
             <Categories></Categories>
             <Moto></Moto>
-            {!adds?.length === 0 && <AdvertisedItems></AdvertisedItems>}
+            {adds.length !== 0 && <AdvertisedItems></AdvertisedItems>}
         </div >
     );
 };
