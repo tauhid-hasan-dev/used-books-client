@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 import Loading from '../../../Loader/Loading';
 
 const Allsellers = () => {
 
-    const { data: sellers = [], isLoading } = useQuery({
+    const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers',],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users?role=seller`)
@@ -11,6 +12,33 @@ const Allsellers = () => {
             return data;
         }
     })
+
+    const handleSellerVerify = (id) => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    toast.success(`Seller Verified`)
+                    refetch();
+                }
+            })
+    }
+    const handleSellerDelete = (id) => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    console.log(data);
+                    toast.success(`Seller Deleted`)
+                    refetch();
+                }
+            })
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -35,10 +63,13 @@ const Allsellers = () => {
                                 <td className='bg-category text-white'>{seller?.name}</td>
                                 <td className='bg-category text-white'>{seller?.email}</td>
                                 <td className='bg-category text-white'>
-                                    <label className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Unverified</label>
+                                    {!seller?.verified && <label onClick={() => handleSellerVerify(seller._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Unverified</label>}
+                                    {
+                                        seller?.verified && <p>verified</p>
+                                    }
                                 </td>
                                 <td className='bg-category text-white'>
-                                    <label className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
+                                    <label onClick={() => handleSellerDelete(seller._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
                                 </td>
                             </tr>)
                         }
