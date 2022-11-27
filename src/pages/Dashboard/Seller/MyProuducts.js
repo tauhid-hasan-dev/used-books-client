@@ -50,7 +50,7 @@ const MyProuducts = () => {
             sellerName,
             sellerPhone,
             sellerEmail,
-            advertised: true,
+            advertised: 'advertised',
         }
 
         fetch(`http://localhost:5000/adds`, {
@@ -110,12 +110,13 @@ const MyProuducts = () => {
                                     {book?.paid ? <p>sold</p> : <label className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Available</label>}
                                 </td>
 
-                                {book?.advertised || <td className='bg-category text-white'>
+                                {book?.advertised === 'advertised' || <td className='bg-category text-white'>
                                     {
                                         book?.paid ? '' : <label onClick={() => handleAdvertise(book)} className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Advertise</label>
                                     }
                                 </td>}
-                                {book?.advertised && <td className='bg-category text-white'>
+
+                                {book?.advertised === 'advertised' && <td className='bg-category text-white'>
                                     {
                                         book?.advertised && <p className='text-white'>Advertised</p>
                                     }
