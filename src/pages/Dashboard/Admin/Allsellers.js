@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import Loading from '../../../Loader/Loading';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const Allsellers = () => {
 
@@ -65,7 +66,9 @@ const Allsellers = () => {
                                 <td className='bg-category text-white'>
                                     {!seller?.verified && <label onClick={() => handleSellerVerify(seller._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Unverified</label>}
                                     {
-                                        seller?.verified && <p>verified</p>
+                                        seller?.verified && <div className='flex justify-start gap-2 items-center'><p>verified  </p>
+                                            <p><FaCheckCircle className='text-blue-700'></FaCheckCircle></p>
+                                        </div>
                                     }
                                 </td>
                                 <td className='bg-category text-white'>
