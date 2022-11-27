@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loading from '../../../Loader/Loading';
 
 const AllBuyers = () => {
 
-    const { data: buyers = [], isLoading } = useQuery({
+    const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers',],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users?role=buyer`)
@@ -13,6 +14,20 @@ const AllBuyers = () => {
             return data;
         }
     })
+
+    const handleBuyerDelete = (id) => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    console.log(data);
+                    toast.success(`Buyer Deleted Successfully`)
+                    refetch();
+                }
+            })
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -37,7 +52,7 @@ const AllBuyers = () => {
                                 <td className='bg-category text-white'>{buyer?.name}</td>
                                 <td className='bg-category text-white'>{buyer?.email}</td>
                                 <td className='bg-category text-white'>
-                                    <label className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
+                                    <label onClick={() => handleBuyerDelete(buyer._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
                                 </td>
                             </tr>)
                         }
