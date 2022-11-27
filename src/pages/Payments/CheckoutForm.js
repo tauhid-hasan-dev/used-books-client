@@ -76,7 +76,7 @@ const CheckoutForm = ({ booking }) => {
 
         if (paymentIntent.status === "succeeded") {
 
-            //store payment data to the backend
+            //store payment data to the database
             const payment = {
                 productPrice,
                 transactionId: paymentIntent.id,
