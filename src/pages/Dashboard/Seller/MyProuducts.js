@@ -75,6 +75,24 @@ const MyProuducts = () => {
 
     }
 
+
+
+    const handleDeleteBook = (id) => {
+        fetch(`http://localhost:5000/books/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    console.log(data);
+                    toast.success(`Deleted Successfully`)
+                    refetch();
+                }
+            })
+    }
+
+
+
     console.log(books);
     if (isLoading) {
         return <Loading></Loading>
@@ -122,7 +140,7 @@ const MyProuducts = () => {
                                     }
                                 </td>}
                                 <td className='bg-category text-white'>
-                                    <label className="btn btn-sm btn-error">Delete</label>
+                                    <label onClick={() => handleDeleteBook(book._id)} className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>)
                         }
