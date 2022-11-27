@@ -11,7 +11,7 @@ const Moto = () => {
                     <h1 className='text-text-color text-3xl lg:text-3xl font-bold'>Our Moto</h1>
 
                     <h1 className='text-white text-3xl lg:text-5xl font-bold'>We believe in Rising Together</h1>
-                    <h1 className='text-slate-300 text-lg lg:text-xl font-regular'>Books should be available for everyone</h1>
+                    <h1 className='text-slate-300 text-lg lg:text-xl font-regular'>Sharing books with reasonable price is our main goal.</h1>
                 </div>
 
             </div>
