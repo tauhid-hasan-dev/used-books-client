@@ -27,8 +27,10 @@ const BookCard = ({ book }) => {
 
     } = book;
 
-    const { data: seller = [], isLoading } = useQuery({
-        queryKey: ['user',],
+    console.log(sellerEmail);
+
+    const { data: seller = {}, isLoading } = useQuery({
+        queryKey: ['user', sellerEmail],
         queryFn: async () => {
             const res = await fetch(`https://used-book-store-server.vercel.app/seller?email=${sellerEmail}`)
             const data = await res.json();
@@ -36,8 +38,8 @@ const BookCard = ({ book }) => {
         }
     })
 
+    console.log(seller.verified)
 
-    //console.log(seller?.verified)
 
     const handleReportedItem = (id) => {
         fetch(`https://used-book-store-server.vercel.app/reported/${id}`, {
@@ -48,7 +50,6 @@ const BookCard = ({ book }) => {
                 if (data.modifiedCount > 0) {
                     console.log(data);
                     toast.success(`Reported To admin`)
-
                 }
             })
     }
@@ -62,7 +63,7 @@ const BookCard = ({ book }) => {
 
 
     return (
-        <div className="bg-banner shadow-sm border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none p-3 lg:p-5 ">
+        <div className=" relative flex flex-col  bg-banner shadow-sm border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none p-3 lg:p-5 ">
             <div className='flex justify-between items-center mb-5'>
                 <div>
                     <div className='text-slate-900 flex items-center gap-2'>
@@ -70,7 +71,7 @@ const BookCard = ({ book }) => {
                             {sellerName}
                         </p>
                         <div>
-                            {seller?.verified && <p><FaCheckCircle className='text-blue-700'></FaCheckCircle></p>}
+                            {seller?.verified === 'Verified' && <p><FaCheckCircle className='text-blue-700'></FaCheckCircle></p>}
                         </div>
                     </div>
                     <div>
@@ -123,7 +124,7 @@ const BookCard = ({ book }) => {
 
             </div>
 
-            <div className=" flex gap-5 justify-between">
+            <div className=" flex gap-5 justify-between mt-auto ">
                 <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn  btn-md    lg:w-[50%] px-6 lg:px-6  text-white bg-nav-color   font-semibold  border hover:text-white hover:bg-green-800 hover:border-nav-color rounded">Book Now</label>
                 <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-md bg-nav-color text-white     w-full px-4   hover:bg-red-500 hover:border-red-500 font-semibold  border hover:text-white rounded">Report to admin</button></Link>
                 {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}

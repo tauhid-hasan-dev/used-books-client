@@ -9,7 +9,7 @@ const Myorders = () => {
     const { user } = useContext(AuthContext);
 
     const { data: bookings = [], isLoading } = useQuery({
-        queryKey: ['bookings',],
+        queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(`https://used-book-store-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
