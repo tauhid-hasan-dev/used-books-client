@@ -61,7 +61,7 @@ const BookingModal = ({ setBooking, book }) => {
                         <input name='email' defaultValue={user?.email} readOnly type="email" placeholder="Email" className=" text-black input input-sm input-bordered w-full " />
                         <input name='buyerphone' type="text" placeholder="Phone Number" className=" text-black input input-sm input-bordered w-full " />
                         <input name='meetinglocation' type="text" placeholder="Meeting Location" className=" text-black input input-sm input-bordered w-full " required />
-                        <input type="Submit" value='Submit' className="text-white border-none bg-banner hover:bg-category btn btn-sm w-full " required />
+                        <input type="Submit" value='Submit' className="text-white border-none bg-green-600 hover:bg-green-700 btn btn-sm w-full " required />
                     </form>
                 </div>
             </div>
