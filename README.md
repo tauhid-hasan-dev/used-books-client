@@ -18,18 +18,14 @@
 * User authorization impleted for every role with jwt(json web token).
 * Payment gateway implemented with stripe.
 * After payment is successful seller will see the product status is "SOLD" instead of Avaialabe.
-* Book will be deleted after from both advertised sectiona and the category section after the payment is successfull.
-* 
-* 
-* 
-* 
-* A full stack website. React js used for frontend and for the backend, express js used for creating  api and connect with mongodb.
-* With mongo CRUD operation, a user can comment, delete and edit their comment. 
-* Firebase authentication used for the User Authentication.
+* Book will be deleted after from both advertised section and the category section after the payment is successfull.
 * 404 router added nomal routes and for dynamic routes 404 page added as well as and error element.
-* Custom API used in this project.(Dynamic API used as well)
-* React router used for routing and dynamic routing applied.
-* Private routing applied for the add service page and add my review page when user is not logged in.
-* Tailwind css and Daisy Ui used for styling and the web app is fully responsive.
-* React Icon package used for icons.
-* Hot toaster used for the notification.
+* Private routing, Dynamic routing and admin route, seller route, and buyer route applied.
+* Custom hook created and userd for jwt verification.
+
+## Technology used in this project
+* React Js
+* Express Js
+* MongoDB
+* Tailwind CSS
+** packaged
