@@ -24,8 +24,15 @@
 * Custom hook created and userd for jwt verification.
 
 ## Technology used in this project
-* React Js
+* React Js(hooks)
 * Express Js
 * MongoDB
 * Tailwind CSS
-** packaged
+* React query
+* React router
+* React icon
+* Hot toast
+* Stripe
+* Axios
+
+
