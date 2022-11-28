@@ -8,8 +8,8 @@ module.exports = {
       colors: {
         'nav-color': '#175941',
         'text-color': '#D6BE87',
-        'category': '#338064',
-        'banner': '#297257',
+        'category': '#F1E8D2',
+        'banner': '#FDF8EE',
 
       },
     },

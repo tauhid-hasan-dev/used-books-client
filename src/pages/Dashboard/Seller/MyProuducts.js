@@ -104,42 +104,42 @@ const MyProuducts = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th className='bg-nav-color text-white'>No</th>
-                            <th className='bg-nav-color text-white'>Image</th>
-                            <th className='bg-nav-color text-white'>Book Name</th>
-                            <th className='bg-nav-color text-white'>Price</th>
-                            <th className='bg-nav-color text-white'>Sale Status</th>
-                            <th className='bg-nav-color text-white'>Advertise</th>
-                            <th className='bg-nav-color text-white'>Delete</th>
+                            <th className='bg-category text-gray-900'>No</th>
+                            <th className='bg-category text-gray-900'>Image</th>
+                            <th className='bg-category text-gray-900'>Book Name</th>
+                            <th className='bg-category text-gray-900'>Price</th>
+                            <th className='bg-category text-gray-900'>Sale Status</th>
+                            <th className='bg-category text-gray-900'>Advertise</th>
+                            <th className='bg-category text-gray-900'>Delete</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
                         {
                             books.map((book, index) => <tr key={book._id}>
-                                <th className='bg-category text-white'>{index + 1}</th>
-                                <td className='bg-category text-white'><div className="avatar">
+                                <th className='bg-banner text-gray-900'>{index + 1}</th>
+                                <td className='bg-banner text-gray-900'><div className="avatar">
                                     <div className="w-14 ">
                                         <img src={book?.productImage} alt="" />
                                     </div>
                                 </div></td>
-                                <td className='bg-category text-white'>{book?.productName}</td>
-                                <td className='bg-category text-white'>${book?.resalePrice}</td>
-                                <td className='bg-category text-white'>
-                                    {book?.paid ? <p>sold</p> : <label className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Available</label>}
+                                <td className='bg-banner text-gray-900'>{book?.productName}</td>
+                                <td className='bg-banner text-gray-900'>${book?.resalePrice}</td>
+                                <td className='bg-banner text-gray-900'>
+                                    {book?.paid ? <p className='text-green-600'>SOLD</p> : <label className="  font-semibold  border-none text-gray-900  ">Available</label>}
                                 </td>
 
-                                {book?.advertised === 'advertised' || <td className='bg-category text-white'>
+                                {book?.advertised === 'advertised' || <td className='bg-banner text-gray-900'>
                                     {
-                                        book?.paid ? '' : <label onClick={() => handleAdvertise(book)} className="btn btn-sm bg-nav-color hover:bg-green-800 border-none">Advertise</label>
+                                        book?.paid ? '' : <label onClick={() => handleAdvertise(book)} className="btn btn-sm bg-category hover:bg-orange-200 border-none text-gray-900">Advertise</label>
                                     }
                                 </td>}
 
-                                {book?.advertised === 'advertised' && <td className='bg-category text-white'>
+                                {book?.advertised === 'advertised' && <td className='bg-banner text-gray-900'>
                                     {
-                                        book?.advertised && <p className='text-white'>Advertised</p>
+                                        book?.advertised && <p className='text-green-600 font-semibold'>Advertised</p>
                                     }
                                 </td>}
-                                <td className='bg-category text-white'>
+                                <td className='bg-banner text-gray-900'>
                                     <label onClick={() => handleDeleteBook(book._id)} className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>)

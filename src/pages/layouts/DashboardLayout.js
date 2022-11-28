@@ -14,19 +14,19 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="drawer drawer-mobile px-0 lg:px-28 bg-banner pt-3">
+            <div className="drawer drawer-mobile px-0 lg:px-28 bg-white pt-3">
                 <input id="dashboard-menu" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content pl-3">
                     <Outlet></Outlet>
                 </div>
-                <div className="drawer-side  bg-category">
+                <div className="drawer-side  bg-banner rounded-xl">
                     <label htmlFor="dashboard-menu" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-white ">
+                    <ul className="menu p-4 w-80 text-gray-900 ">
                         {
                             isBuyer && <li><NavLink
                                 to="/dashboard/myorders"
                                 className={({ isActive }) =>
-                                    isActive ? '  text-text-color ' : undefined
+                                    isActive ? '  text-navbar-color font-semibold' : undefined
                                 }
                             >My Orders</NavLink></li>
                         }
@@ -35,13 +35,13 @@ const DashboardLayout = () => {
                                 <li><NavLink
                                     to="/dashboard/myproducts"
                                     className={({ isActive }) =>
-                                        isActive ? '  text-text-color ' : undefined
+                                        isActive ? '  text-navbar-color  font-semibold' : undefined
                                     }
                                 >My Products</NavLink></li>
                                 <li><NavLink
                                     to="/dashboard/addproduct"
                                     className={({ isActive }) =>
-                                        isActive ? '  text-text-color ' : undefined
+                                        isActive ? '  text-navbar-color font-semibold' : undefined
                                     }
                                 >Add Product</NavLink></li>
                             </>
@@ -50,20 +50,20 @@ const DashboardLayout = () => {
                             <li><NavLink
                                 to="/dashboard/allseller"
                                 className={({ isActive }) =>
-                                    isActive ? '  text-text-color ' : undefined
+                                    isActive ? '  text-navbar-color font-semibold' : undefined
                                 }
                             >All Seller</NavLink></li>
 
                             <li><NavLink
                                 to="/dashboard/allbuyer"
                                 className={({ isActive }) =>
-                                    isActive ? '  text-text-color ' : undefined
+                                    isActive ? '  text-navbar-color font-semibold' : undefined
                                 }
                             >All Buyers</NavLink></li>
                             <li><NavLink
                                 to="/dashboard/reporteditems"
                                 className={({ isActive }) =>
-                                    isActive ? '  text-text-color ' : undefined
+                                    isActive ? '  text-navbar-color font-semibold' : undefined
                                 }
                             >Reported Items</NavLink></li>
                         </>}

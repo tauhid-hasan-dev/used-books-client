@@ -27,27 +27,15 @@ const Categories = () => {
         getCategories()
     }, [])
 
-    /* const { data: categories = [], isLoading } = useQuery({
-        queryKey: ['categories',],
-        queryFn: async () => {
-            const res = await fetch(`https://used-book-store-server.vercel.app/categories`)
-            const data = await res.json();
-            return data;
-        }
-    }) */
-
-
-
-    //console.log(categories.length)
 
     if (loading) {
         return <Loading></Loading>
     }
 
     return (
-        <div className='bg-category'>
+        <div className='bg-banner'>
             <div className='flex justify-center pt-8 pb-5 lg:pb-0 lg:pt-14'>
-                <p className='text-4xl text-white font-semibold'>Categories</p>
+                <p className='text-4xl text-gray-800 font-semibold'>Categories</p>
             </div>
             <div className='pb-5 pt-5 lg:pt-14 lg:pb-20 px-5 lg:px-28 grid grid-cols-1 lg:grid-cols-3 gap-10'>
                 {categories?.map(category =>
