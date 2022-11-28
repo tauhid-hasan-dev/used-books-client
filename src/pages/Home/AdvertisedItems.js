@@ -20,7 +20,7 @@ const AdvertisedItems = () => {
 
     return (
         <div>
-            <div className='bg-banner'>
+            <div className='bg-white'>
                 <div className='flex justify-center p-10'>
                     <p className='text-3xl font-semibold'>Sponsored Books</p>
                 </div>

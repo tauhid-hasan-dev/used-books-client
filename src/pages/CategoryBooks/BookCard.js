@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaClock, FaMapMarkerAlt, FaRegCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Loading from '../../Loader/Loading';
 import BookingModal from '../Shared/Booking Modal/BookingModal';
@@ -62,58 +62,70 @@ const BookCard = ({ book }) => {
 
 
     return (
-        <div className="bg-category border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none ">
-            <div className=''>
-                <img className='w-full rounded-t-xl' src={productImage} alt="" />
-            </div>
-            <div className="card-body items-center text-center ">
-                <h2 className="card-title text-gray-900 text-2xl">{productName}</h2>
-            </div>
-            <div className='px-20 lg:px-24'>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Location:</span> <span className='text-slate-900'>{location}</span>
-                </div>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Original Price:</span> <span className='text-slate-900'>${originalPrice}</span>
-                </div>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Resale Price:</span> <span className='text-slate-900'>${resalePrice}</span>
-                </div>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Condition:</span> <span className='text-slate-900'>{condition}</span>
-                </div>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Purchase Year:</span> <span className='text-slate-900'>{purchaseYear}</span>
-                </div>
-                <div className='flex justify-between'>
-                    <span className='text-gray-900 font-semibold'>Years of Use:</span> <span className='text-slate-900'>{useOfYear}</span>
-                </div>
-
-            </div>
-            <div className='px-5 lg:px-16 py-8'>
-                <div className='flex justify-between '>
-                    <span className='text-gray-900 font-semibold'>Seller Name:</span>
-
+        <div className="bg-banner shadow-sm border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none p-3 lg:p-5 ">
+            <div className='flex justify-between items-center mb-5'>
+                <div>
                     <div className='text-slate-900 flex items-center gap-2'>
-                        <p>
+                        <p className='font-bold'>
                             {sellerName}
                         </p>
                         <div>
                             {seller?.verified && <p><FaCheckCircle className='text-blue-700'></FaCheckCircle></p>}
                         </div>
                     </div>
+                    <div>
+                        <p className='font-thin text-sm'>{sellerPhone}</p>
+                    </div>
                 </div>
-                <div className='flex justify-between '>
-                    <span className='text-gray-900 font-semibold'>Seller Phone:</span> <span className='text-slate-900'>{sellerPhone}</span>
-                </div>
-                <div className='flex justify-between '>
-                    <span className='text-gray-900 font-semibold'>Listing Date:</span> <span className='text-slate-900'>{dateField}</span>
+                <div className='f'>
+                    <div className='text-slate-900 flex items-center gap-2 justify-end'>
+                        <div>
+                            <p ><FaMapMarkerAlt className='text-nav-color'></FaMapMarkerAlt></p>
+                        </div>
+                        <div>
+                            {location}
+                        </div>
+                    </div>
+                    <div>
+                        <p className='font-thin text-sm'>{dateField}</p>
+                    </div>
                 </div>
             </div>
+            <div className='flex justify-center pt-1 pb-5'>
+                <p className='text-3xl font-bold'>{productName}</p>
+            </div>
 
-            <div className="py-3 px-3 flex gap-5 justify-between">
-                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn bg-banner btn-sm  text-gray-900  lg:w-[50%] px-6 lg:px-6 py-2 border-text-color  font-semibold hover:border-text-color border hover:text-white hover:bg-nav-color hover:border-nav-color rounded">Book Now</label>
-                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-sm bg-banner   text-gray-900  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
+            <div className=''>
+                <img className='w-full rounded-xl' src={productImage} alt="" />
+            </div>
+
+            <div className=' py-5'>
+
+                <div className='flex justify-between '>
+                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded-xl'>
+                        <span className='text-white font-semibold'>Original Price:</span> <span className='text-white'>${originalPrice}</span>
+                    </div>
+                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded-xl'>
+                        <span className='text-white font-semibold'>Resale Price:</span> <span className='text-white'>${resalePrice}</span>
+                    </div>
+                </div>
+                <div className='flex flex-col gap-1 py-7'>
+                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                        <span className='text-gray-900 font-semibold'>Condition:</span> <span className='text-slate-900'>{condition}</span>
+                    </div>
+                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                        <span className='text-gray-900 font-semibold'>Purchase Year:</span> <span className='text-slate-900'>{purchaseYear}</span>
+                    </div>
+                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                        <span className='text-gray-900 font-semibold'>Years of Use:</span> <span className='text-slate-900'>{useOfYear}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div className=" flex gap-5 justify-between">
+                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn  btn-md    lg:w-[50%] px-6 lg:px-6  text-white bg-nav-color   font-semibold  border hover:text-white hover:bg-green-800 hover:border-nav-color rounded">Book Now</label>
+                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-md bg-nav-color text-white     w-full px-4   hover:bg-red-500 hover:border-red-500 font-semibold  border hover:text-white rounded">Report to admin</button></Link>
                 {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
             </div>
 
