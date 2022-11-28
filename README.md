@@ -1,4 +1,4 @@
-# Rare Books (An old and rare online book buy and sell store)
+# Rare Books - An online old book store(buy & sell)
 
 ### Live website : https://used-book-store-90b6b.web.app/
 ### server: https://used-book-store-server.vercel.app/
@@ -8,11 +8,19 @@
 
 ## Some of the important feature of this project
 
-* This is a old and rare books buy and sell store , a single page application and created with Create react app.
-* Dashboard implemented. User can sign up as a buyer or seller. 
+* This is a old and rare books store. A user can buy and sell his/her old books.
+* #Dashboard implemented. User can sign up as a buyer or seller. Admin is set manully. Admin email and password is mentioned above.
 * Admin can see all seller, all buyer, and reported item route. A buyer can see my products route and a seller can see my products and add products routes.
-* Admin role implemented. Admin can verify a seller and after verification a blue is will be visible.
-* User can sign up as a seller or a buyer. A seller can add a book, advertise and delete books he/she wanted.
+* Admin can verify a seller and after verification a blue is will be visible. Admin can delete any user or any books which is reported.
+* A seller can add a book, advertise and delete books he/she wanted.
+* A buyer can see the booked product and he/she can report to the admin if he/she thinks the seller is a scam or etc.
+* User authentication implemented for both email and for the google users, with firebse authentication.
+* User authorization impleted for every role with jwt(json web token).
+* Payment gateway implemented with stripe.
+* After payment is successful seller will see the product status is "SOLD" instead of Avaialabe.
+* Book will be deleted after from both advertised sectiona and the category section after the payment is successfull.
+* 
+* 
 * 
 * 
 * A full stack website. React js used for frontend and for the backend, express js used for creating  api and connect with mongodb.
