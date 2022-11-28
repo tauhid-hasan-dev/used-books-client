@@ -56,7 +56,7 @@ const Myorders = () => {
                                 <td className='bg-banner text-gray-900'>${booking?.productPrice}</td>
 
                                 <td className='bg-banner text-gray-900 text-center'>
-                                    {booking?.productPrice && !booking?.paid && <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm  bg-category hover:bg-orange-300 border-none text-gray-900'>Pay</button></Link>}
+                                    {booking?.productPrice && !booking?.paid && <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm btn-success   border-none text-white hover:bg-green-600'>Pay</button></Link>}
                                     {booking?.productPrice && booking?.paid && <span className='font-bold text-green-600 '>PAID</span>}
                                 </td>
                             </tr>)
