@@ -9,7 +9,7 @@
 ## Some of the important feature of this project
 
 * This is a old and rare books store. A user can buy and sell his/her old books.
-* #Dashboard implemented. User can sign up as a buyer or seller. Admin is set manully. Admin email and password is mentioned above.
+* ##Dashboard implemented. User can sign up as a buyer or seller. Admin is set manully. Admin email and password is mentioned above.
 * Admin can see all seller, all buyer, and reported item route. A buyer can see my products route and a seller can see my products and add products routes.
 * Admin can verify a seller and after verification a blue is will be visible. Admin can delete any user or any books which is reported.
 * A seller can add a book, advertise and delete books he/she wanted.
