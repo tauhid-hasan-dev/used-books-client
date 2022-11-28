@@ -50,20 +50,20 @@ const Allsellers = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th className='bg-nav-color text-white'>No</th>
-                            <th className='bg-nav-color text-white'>Name</th>
-                            <th className='bg-nav-color text-white'>Email</th>
-                            <th className='bg-nav-color text-white'>Verify</th>
-                            <th className='bg-nav-color text-white'>Delete</th>
+                            <th className='bg-category text-gray-900'>No</th>
+                            <th className='bg-category text-gray-900'>Name</th>
+                            <th className='bg-category text-gray-900'>Email</th>
+                            <th className='bg-category text-gray-900'>Verify</th>
+                            <th className='bg-category text-gray-900'>Delete</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
                         {
                             sellers.map((seller, i) => <tr key={seller._id}>
-                                <th className='bg-category text-white'>{i + 1}</th>
-                                <td className='bg-category text-white'>{seller?.name}</td>
-                                <td className='bg-category text-white'>{seller?.email}</td>
-                                <td className='bg-category text-white'>
+                                <th className='bg-banner text-gray-900'>{i + 1}</th>
+                                <td className='bg-banner text-gray-900'>{seller?.name}</td>
+                                <td className='bg-banner text-gray-900'>{seller?.email}</td>
+                                <td className='bg-banner text-gray-900'>
                                     {!seller?.verified && <label onClick={() => handleSellerVerify(seller._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Unverified</label>}
                                     {
                                         seller?.verified && <div className='flex justify-start gap-2 items-center'><p>verified  </p>
@@ -71,7 +71,7 @@ const Allsellers = () => {
                                         </div>
                                     }
                                 </td>
-                                <td className='bg-category text-white'>
+                                <td className='bg-banner text-gray-900'>
                                     <label onClick={() => handleSellerDelete(seller._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
                                 </td>
                             </tr>)

@@ -85,7 +85,6 @@ const AddProduct = () => {
             .catch(err => console.log(err.message))
 
 
-
     }
     return (
         <div className="hero bg-banner rounded-xl py-10 ">

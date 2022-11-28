@@ -4,8 +4,8 @@ import { AuthContext } from '../../../context/AuthProvider';
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     return (
-        <div className='text-gray-600 text-3xl' >
-            <p>Dear <span className='font-bold'>{user?.displayName}</span>. Wecome to your dashboard! </p>
+        <div className='text-gray-600  px  flex flex-col gap-2' >
+            <p className='text-2xl'>Dear <span className='font-bold'>{user?.displayName}</span>. Wecome to your dashboard! </p>
             <p>You can now navigate sidebar to explore the features </p>
         </div>
     );
