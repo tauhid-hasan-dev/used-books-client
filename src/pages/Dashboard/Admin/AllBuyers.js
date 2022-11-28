@@ -9,11 +9,7 @@ const AllBuyers = () => {
     const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers',],
         queryFn: async () => {
-            const res = await fetch(`https://used-book-store-server.vercel.app/users?role=buyer`, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('usedBooksToken')}`
-                }
-            })
+            const res = await fetch(`https://used-book-store-server.vercel.app/users?role=buyer`)
             const data = await res.json();
             return data;
         }
