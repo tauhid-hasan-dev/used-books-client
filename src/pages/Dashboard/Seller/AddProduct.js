@@ -60,7 +60,7 @@ const AddProduct = () => {
                     }
 
                     //sending book info to the backend 
-                    fetch(`http://localhost:5000/allbooks`, {
+                    fetch(`https://used-book-store-server.vercel.app/allbooks`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

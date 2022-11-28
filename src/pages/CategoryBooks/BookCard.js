@@ -30,7 +30,7 @@ const BookCard = ({ book }) => {
     const { data: seller = [], isLoading } = useQuery({
         queryKey: ['user',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/seller?email=${sellerEmail}`)
+            const res = await fetch(`https://used-book-store-server.vercel.app/seller?email=${sellerEmail}`)
             const data = await res.json();
             return data;
         }
@@ -40,7 +40,7 @@ const BookCard = ({ book }) => {
     //console.log(seller?.verified)
 
     const handleReportedItem = (id) => {
-        fetch(`http://localhost:5000/reported/${id}`, {
+        fetch(`https://used-book-store-server.vercel.app/reported/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

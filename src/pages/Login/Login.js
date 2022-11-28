@@ -50,7 +50,7 @@ const Login = () => {
                     userRole: 'buyer',
                 }
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://used-book-store-server.vercel.app/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -63,7 +63,7 @@ const Login = () => {
                     })
                 console.log(user);
 
-                fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                fetch(`https://used-book-store-server.vercel.app/jwt?email=${user?.email}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.accessToken) {

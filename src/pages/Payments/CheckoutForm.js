@@ -17,7 +17,7 @@ const CheckoutForm = ({ booking }) => {
     //2(after creating api from backend)
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://used-book-store-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const CheckoutForm = ({ booking }) => {
                 bookingId: _id,
                 sellerPostId: sellerPostId
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://used-book-store-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

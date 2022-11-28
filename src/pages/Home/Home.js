@@ -10,7 +10,7 @@ const Home = () => {
     const { data: adds = [], isLoading, refetch } = useQuery({
         queryKey: ['adds',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/adds`)
+            const res = await fetch(`https://used-book-store-server.vercel.app/adds`)
             const data = await res.json();
             return data;
         }

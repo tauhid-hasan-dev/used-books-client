@@ -10,7 +10,7 @@ const MyProuducts = () => {
     const { data: books = [], isLoading, refetch } = useQuery({
         queryKey: ['books',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/books?email=${user?.email}`)
+            const res = await fetch(`https://used-book-store-server.vercel.app/books?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
@@ -53,7 +53,7 @@ const MyProuducts = () => {
             advertised: 'advertised',
         }
 
-        fetch(`http://localhost:5000/adds`, {
+        fetch(`https://used-book-store-server.vercel.app/adds`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -78,7 +78,7 @@ const MyProuducts = () => {
 
 
     const handleDeleteBook = (id) => {
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://used-book-store-server.vercel.app/books/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

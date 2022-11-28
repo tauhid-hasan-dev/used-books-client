@@ -68,7 +68,7 @@ const Register = () => {
                 }
 
                 //sending book info to the backend 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://used-book-store-server.vercel.app/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -100,7 +100,7 @@ const Register = () => {
                 }
 
                 //sending book info to the backend 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://used-book-store-server.vercel.app/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -113,7 +113,7 @@ const Register = () => {
                     })
 
                 //jwt saving in client 
-                fetch(`http://localhost:5000/jwt?email=${user?.email}`)
+                fetch(`https://used-book-store-server.vercel.app/jwt?email=${user?.email}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.accessToken) {
