@@ -7,7 +7,11 @@ const AdvertisedItems = () => {
     const { data: adds = [], isLoading, refetch } = useQuery({
         queryKey: ['adds',],
         queryFn: async () => {
-            const res = await fetch(`https://used-book-store-server.vercel.app/adds`)
+            const res = await fetch(`https://used-book-store-server.vercel.app/adds`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('usedBooksToken')}`
+                }
+            })
             const data = await res.json();
             return data;
         }
