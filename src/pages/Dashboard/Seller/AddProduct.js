@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import PrimaryButton from '../../../Components/PrimaryButton';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const AddProduct = () => {
@@ -87,31 +88,31 @@ const AddProduct = () => {
 
     }
     return (
-        <div className="hero bg-category py-10 ">
+        <div className="hero bg-banner rounded-xl py-10 ">
             <div className="hero-content flex-col  lg:flex-row">
                 <div className=' flex flex-col items-center text-white '>
                     <form onSubmit={handleAddProduct} className="  rounded-none border-text-color border-none  w-[350px]   lg:w-[800px]  " >
-                        <p className='text-center text-2xl lg:text-4xl  font-semibold mb-7'>Add Product</p>
+                        <p className='text-center text-gray-900 text-2xl lg:text-4xl  font-semibold mb-7'>Add Product</p>
 
                         {/* first row */}
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Book Name</span>
+                                    <span className="label-text text-gray-700 text-md">Book Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="Your book name" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Book Image</span>
+                                    <span className="label-text text-gray-700 text-md">Book Image</span>
                                 </label>
-                                <input type="file" name='image' className="file-input file-input-bordered file-input-accent text-slate-900 font-semibold rounded-none w-full" />
+                                <input type="file" name='image' className="file-input file-input-bordered file-input-nav-color  text-slate-900 font-semibold rounded-none w-full" />
                             </div>
                             <div className="form-control w-[100%]">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md" >Select Category </span>
+                                    <span className="label-text text-gray-700 text-md" >Select Category </span>
                                 </label>
                                 <select onChange={handleChangeCategory} className="select select-bordered  text-slate-900 font-semibold rounded-none">
                                     <option value="01" selected>Programming </option>
@@ -126,19 +127,19 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Original Price</span>
+                                    <span className="label-text text-gray-700 text-md">Original Price</span>
                                 </label>
                                 <input type="text" name='originalprice' placeholder="Original price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Resale Price</span>
+                                    <span className="label-text text-gray-700 text-md">Resale Price</span>
                                 </label>
                                 <input type="text" name='resaleprice' placeholder="Resale price of the book" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control w-[100%]">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md" >Condition </span>
+                                    <span className="label-text text-gray-700 text-md" >Condition </span>
                                 </label>
                                 <select onChange={handleChangeCondition} className="select select-bordered  text-slate-900 font-semibold rounded-none">
                                     <option value="Excellent" selected>Excellent </option>
@@ -151,19 +152,19 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Location</span>
+                                    <span className="label-text text-gray-700 text-md">Location</span>
                                 </label>
                                 <input type="text" name='location' placeholder="Your Location" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Year of purchase</span>
+                                    <span className="label-text text-gray-700 text-md">Year of purchase</span>
                                 </label>
                                 <input type="text" name='puchaseyear' placeholder="Purchase year" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Years of use</span>
+                                    <span className="label-text text-gray-700 text-md">Years of use</span>
                                 </label>
                                 <input type="text" name='useyear' placeholder="Total year of usage" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
@@ -173,19 +174,19 @@ const AddProduct = () => {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Seller Name</span>
+                                    <span className="label-text text-gray-700 text-md">Seller Name</span>
                                 </label>
                                 <input type="text" name='sellername' placeholder="Seller Name" className="input input-bordered  text-slate-900 font-semibold rounded-none" defaultValue={user?.displayName} readOnly required />
                             </div>
                             <div className="form-control ">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Seller phone no</span>
+                                    <span className="label-text text-gray-700 text-md">Seller phone no</span>
                                 </label>
                                 <input type="text" name='sellerphone' placeholder="Seller Phone No" className="input input-bordered  text-slate-900 font-semibold rounded-none" required />
                             </div>
                             <div className="form-control ">
                                 <label className="label">
-                                    <span className="label-text text-text-color text-md">Seller Email</span>
+                                    <span className="label-text text-gray-700 text-md">Seller Email</span>
                                 </label>
                                 <input type="text" name='email' placeholder="Seller Email" className="input input-bordered  text-slate-900 font-semibold rounded-none" readOnly required defaultValue={user?.email} />
                             </div>
@@ -194,7 +195,8 @@ const AddProduct = () => {
 
 
                         <div className="form-control mt-6">
-                            <button type='submit' className="border rounded  p-3 border-text-color hover:bg-text-color font-semibold hover:border-text-color  hover:text-nav-color   ">Add Product</button>
+                            <button type='submit' className="border p-3 text-white bg-nav-color hover:bg-green-800">Add Product</button>
+
                         </div>
                     </form>
 
