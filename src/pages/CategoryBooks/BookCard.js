@@ -67,34 +67,34 @@ const BookCard = ({ book }) => {
                 <img className='w-full rounded-t-xl' src={productImage} alt="" />
             </div>
             <div className="card-body items-center text-center ">
-                <h2 className="card-title text-white text-2xl">{productName}</h2>
+                <h2 className="card-title text-gray-900 text-2xl">{productName}</h2>
             </div>
             <div className='px-20 lg:px-24'>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Location:</span> <span className='text-slate-200'>{location}</span>
+                    <span className='text-gray-900 font-semibold'>Location:</span> <span className='text-slate-900'>{location}</span>
                 </div>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Original Price:</span> <span className='text-slate-200'>${originalPrice}</span>
+                    <span className='text-gray-900 font-semibold'>Original Price:</span> <span className='text-slate-900'>${originalPrice}</span>
                 </div>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Resale Price:</span> <span className='text-slate-200'>${resalePrice}</span>
+                    <span className='text-gray-900 font-semibold'>Resale Price:</span> <span className='text-slate-900'>${resalePrice}</span>
                 </div>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Condition:</span> <span className='text-slate-200'>{condition}</span>
+                    <span className='text-gray-900 font-semibold'>Condition:</span> <span className='text-slate-900'>{condition}</span>
                 </div>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Purchase Year:</span> <span className='text-slate-200'>{purchaseYear}</span>
+                    <span className='text-gray-900 font-semibold'>Purchase Year:</span> <span className='text-slate-900'>{purchaseYear}</span>
                 </div>
                 <div className='flex justify-between'>
-                    <span className='text-text-color font-semibold'>Years of Use:</span> <span className='text-slate-200'>{useOfYear}</span>
+                    <span className='text-gray-900 font-semibold'>Years of Use:</span> <span className='text-slate-900'>{useOfYear}</span>
                 </div>
 
             </div>
             <div className='px-5 lg:px-16 py-8'>
                 <div className='flex justify-between '>
-                    <span className='text-text-color font-semibold'>Seller Name:</span>
+                    <span className='text-gray-900 font-semibold'>Seller Name:</span>
 
-                    <div className='text-slate-200 flex items-center gap-2'>
+                    <div className='text-slate-900 flex items-center gap-2'>
                         <p>
                             {sellerName}
                         </p>
@@ -104,16 +104,16 @@ const BookCard = ({ book }) => {
                     </div>
                 </div>
                 <div className='flex justify-between '>
-                    <span className='text-text-color font-semibold'>Seller Phone:</span> <span className='text-slate-200'>{sellerPhone}</span>
+                    <span className='text-gray-900 font-semibold'>Seller Phone:</span> <span className='text-slate-900'>{sellerPhone}</span>
                 </div>
                 <div className='flex justify-between '>
-                    <span className='text-text-color font-semibold'>Listing Date:</span> <span className='text-slate-200'>{dateField}</span>
+                    <span className='text-gray-900 font-semibold'>Listing Date:</span> <span className='text-slate-900'>{dateField}</span>
                 </div>
             </div>
 
             <div className="py-3 px-3 flex gap-5 justify-between">
-                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn bg-banner btn-sm  text-text-color  lg:w-[50%] px-6 lg:px-6 py-2 border-text-color hover:bg-text-color font-semibold hover:border-text-color border hover:text-nav-color rounded">Book Now</label>
-                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-sm bg-banner   text-text-color  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
+                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn bg-banner btn-sm  text-gray-900  lg:w-[50%] px-6 lg:px-6 py-2 border-text-color  font-semibold hover:border-text-color border hover:text-white hover:bg-nav-color hover:border-nav-color rounded">Book Now</label>
+                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-sm bg-banner   text-gray-900  w-full px-4  py-2 border-text-color hover:bg-red-500 font-semibold hover:border-text-color border hover:text-white rounded">Report to admin</button></Link>
                 {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
             </div>
 
