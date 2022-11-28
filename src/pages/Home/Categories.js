@@ -1,22 +1,46 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../Loader/Loading';
 import CategoryCard from './CategoryCard';
+/* const axios = require('axios').default; */
+import axios from 'axios';
 
 const Categories = () => {
+    const [categories, setCategories] = useState([]);
+    const { loading } = useContext(AuthContext)
 
-    const { data: categories = [], isLoading } = useQuery({
+    const getCategories = () => {
+        try {
+            axios.get(`https://used-book-store-server.vercel.app/categories`)
+                .then((response) => {
+                    console.log(response);
+                    const data = response.data;
+                    setCategories(data)
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [])
+
+    /* const { data: categories = [], isLoading } = useQuery({
         queryKey: ['categories',],
         queryFn: async () => {
             const res = await fetch(`https://used-book-store-server.vercel.app/categories`)
             const data = await res.json();
             return data;
         }
-    })
+    }) */
+
+
 
     //console.log(categories.length)
 
-    if (isLoading) {
+    if (loading) {
         return <Loading></Loading>
     }
 
