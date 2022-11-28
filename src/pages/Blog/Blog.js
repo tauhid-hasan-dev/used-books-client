@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='px-5 lg:px-20 py-5 lg:py-20'>
+        <div className='px-5 lg:px-28 py-5 lg:py-20'>
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded mb-2">
                 <div className="collapse-title text-xl font-medium">
                     What are the different ways to manage a state in a React application?
@@ -21,7 +21,7 @@ const Blog = () => {
                     <br />  <br />URL state – Data that exists on our URLs, including the pathname and query parameters.URL state is often missing as a category of state, but it is an important one.In many cases, a lot of major parts of our application rely upon accessing URL state.
                 </div>
             </div>
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mb-2">
+            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded mb-2">
                 <div className="collapse-title text-xl font-medium">
                     How does prototypical inheritance work?
                 </div>

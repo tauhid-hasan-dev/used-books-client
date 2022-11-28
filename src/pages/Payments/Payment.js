@@ -20,9 +20,11 @@ const Payment = () => {
 
     return (
         <div>
-            <h3 className="text-3xl">Book Name: {productName}</h3>
-            <p className="text-xl">Total Price: {productPrice}</p>
-            <div className='border-2  p-5 m-20 ' >
+            <div className='flex flex-col gap-2 justify-center items-center'>
+                <h3 className="text-3xl">Book Name: {productName}</h3>
+                <p className="text-xl">Total Price: ${productPrice}</p>
+            </div>
+            <div className='bg-banner p-5 m-10' >
                 <Elements stripe={stripePromise}>
                     <CheckoutForm booking={booking} />
                 </Elements>

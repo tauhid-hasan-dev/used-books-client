@@ -38,28 +38,28 @@ const ReportedItems = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th className='bg-nav-color text-white'>No</th>
-                            <th className='bg-nav-color text-white'>Image</th>
-                            <th className='bg-nav-color text-white'>Book Name</th>
-                            <th className='bg-nav-color text-white'>Seller</th>
-                            <th className='bg-nav-color text-white'>email</th>
-                            <th className='bg-nav-color text-white'>Delete</th>
+                            <th className='bg-category text-gray-900'>No</th>
+                            <th className='bg-category text-gray-900'>Image</th>
+                            <th className='bg-category text-gray-900'>Book Name</th>
+                            <th className='bg-category text-gray-900'>Seller</th>
+                            <th className='bg-category text-gray-900'>email</th>
+                            <th className='bg-category text-gray-900'>Delete</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
                         {
                             reporteditems.map((book, index) => <tr key={book._id}>
-                                <th className='bg-category text-white'>{index + 1}</th>
-                                <td className='bg-category text-white'><div className="avatar">
+                                <th className='bg-banner text-gray-900'>{index + 1}</th>
+                                <td className='bg-banner text-gray-900'><div className="avatar">
                                     <div className="w-14 ">
                                         <img src={book?.productImage} alt="" />
                                     </div>
                                 </div></td>
-                                <td className='bg-category text-white'>{book?.productName}</td>
-                                <td className='bg-category text-white'>{book?.sellerName}</td>
-                                <td className='bg-category text-white'>{book?.sellerEmail}</td>
+                                <td className='bg-banner text-gray-900'>{book?.productName}</td>
+                                <td className='bg-banner text-gray-900'>{book?.sellerName}</td>
+                                <td className='bg-banner text-gray-900'>{book?.sellerEmail}</td>
 
-                                <td className='bg-category text-white'>
+                                <td className='bg-banner text-gray-900'>
                                     <label onClick={() => handleDeleteBook(book._id)} className="btn btn-sm btn-error">Delete</label>
                                 </td>
                             </tr>)

@@ -35,29 +35,29 @@ const Myorders = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th className='bg-nav-color text-white'>No</th>
-                            <th className='bg-nav-color text-white'>Image</th>
-                            <th className='bg-nav-color text-white'>Book Name</th>
-                            <th className='bg-nav-color text-white'>Price</th>
+                            <th className='bg-category text-gray-900'>No</th>
+                            <th className='bg-category text-gray-900'>Image</th>
+                            <th className='bg-category text-gray-900'>Book Name</th>
+                            <th className='bg-category text-gray-900'>Price</th>
 
-                            <th className='bg-nav-color text-white text-center'>Payment Status</th>
+                            <th className='bg-category text-gray-900 text-center'>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
                         {
                             bookings.map((booking, i) => <tr key={booking._id}>
-                                <th className='bg-category text-white'>{i + 1}</th>
-                                <td className='bg-category text-white'><div className="avatar">
+                                <th className='bg-banner text-gray-900'>{i + 1}</th>
+                                <td className='bg-banner text-gray-900'><div className="avatar">
                                     <div className="w-14 ">
                                         <img src={booking?.productImage} alt="" />
                                     </div>
                                 </div></td>
-                                <td className='bg-category text-white'>{booking?.productName}</td>
-                                <td className='bg-category text-white'>${booking?.productPrice}</td>
+                                <td className='bg-banner text-gray-900'>{booking?.productName}</td>
+                                <td className='bg-banner text-gray-900'>${booking?.productPrice}</td>
 
-                                <td className='bg-category text-white text-center'>
-                                    {booking?.productPrice && !booking?.paid && <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm  bg-nav-color hover:bg-green-800 border-none'>Pay</button></Link>}
-                                    {booking?.productPrice && booking?.paid && <span className='font-bold text-green-600 '>Paid</span>}
+                                <td className='bg-banner text-gray-900 text-center'>
+                                    {booking?.productPrice && !booking?.paid && <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-sm  bg-category hover:bg-orange-300 border-none text-gray-900'>Pay</button></Link>}
+                                    {booking?.productPrice && booking?.paid && <span className='font-bold text-green-600 '>PAID</span>}
                                 </td>
                             </tr>)
                         }

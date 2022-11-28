@@ -108,7 +108,7 @@ const CheckoutForm = ({ booking }) => {
     return (
         <>
             {/* //paste it from github(1) */}
-            <form className='bg-white p-5' onSubmit={handleSubmit}>
+            <form className='bg-white' onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -125,7 +125,7 @@ const CheckoutForm = ({ booking }) => {
                         },
                     }}
                 />
-                <button className='bg-green-500 mt-5 px-5 ' type="submit" disabled={!stripe || !clientSecret || isLoading}>
+                <button className='bg-green-800 text-white mt-5 px-10 py-2 hover:bg-green-700 ' type="submit" disabled={!stripe || !clientSecret || isLoading}>
                     Pay
                 </button>
             </form>

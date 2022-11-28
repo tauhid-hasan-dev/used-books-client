@@ -39,19 +39,19 @@ const AllBuyers = () => {
                 <table className="table w-full ">
                     <thead className='bg-banner'>
                         <tr>
-                            <th className='bg-nav-color text-white'>No</th>
-                            <th className='bg-nav-color text-white'>Name</th>
-                            <th className='bg-nav-color text-white'>Email</th>
-                            <th className='bg-nav-color text-white'>Delete</th>
+                            <th className='bg-category text-gray-900'>No</th>
+                            <th className='bg-category text-gray-900'>Name</th>
+                            <th className='bg-category text-gray-900'>Email</th>
+                            <th className='bg-category text-gray-900'>Delete</th>
                         </tr>
                     </thead>
                     <tbody className='bg-banner'>
                         {
                             buyers.map((buyer, i) => <tr key={buyer._id}>
-                                <th className='bg-category text-white'>{i + 1}</th>
-                                <td className='bg-category text-white'>{buyer?.name}</td>
-                                <td className='bg-category text-white'>{buyer?.email}</td>
-                                <td className='bg-category text-white'>
+                                <th className='bg-banner text-gray-900'>{i + 1}</th>
+                                <td className='bg-banner text-gray-900'>{buyer?.name}</td>
+                                <td className='bg-banner text-gray-900'>{buyer?.email}</td>
+                                <td className='bg-banner text-gray-900'>
                                     <label onClick={() => handleBuyerDelete(buyer._id)} className="btn btn-sm  bg-red-400 hover:bg-red-500 border-none">Delete</label>
                                 </td>
                             </tr>)
