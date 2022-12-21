@@ -24,7 +24,7 @@ const AdvertisedItems = () => {
                 <div className='flex justify-center p-10'>
                     <p className='text-3xl font-semibold'>Sponsored Books</p>
                 </div>
-                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 lg:px-28 pb-16 lg:pt-5 pt-5'>
+                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-5 lg:px-28 pb-16 lg:pt-5 pt-5'>
                     {
                         adds?.map(book => <BookCard key={book._id} book={book}></BookCard>)
                     }

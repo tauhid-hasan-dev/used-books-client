@@ -63,11 +63,11 @@ const BookCard = ({ book }) => {
 
 
     return (
-        <div className=" relative flex flex-col  bg-banner shadow-sm border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none p-3 lg:p-5 ">
+        <div className=" relative flex flex-col  bg-banner shadow-sm border items-stretch cursor-pointer card rounded-xl card-compact bg-bg-login-color  border-none p-2 lg:p-3 ">
             <div className='flex justify-between items-center mb-5'>
                 <div>
                     <div className='text-slate-900 flex items-center gap-2'>
-                        <p className='font-bold'>
+                        <p className='font-bold text-[12px] lg:text-[14px]'>
                             {sellerName}
                         </p>
                         <div>
@@ -75,7 +75,7 @@ const BookCard = ({ book }) => {
                         </div>
                     </div>
                     <div>
-                        <p className='font-thin text-sm'>{sellerPhone}</p>
+                        <p className='font-thin text-[12px]'>{sellerPhone}</p>
                     </div>
                 </div>
                 <div className='f'>
@@ -83,51 +83,50 @@ const BookCard = ({ book }) => {
                         <div>
                             <p ><FaMapMarkerAlt className='text-nav-color'></FaMapMarkerAlt></p>
                         </div>
-                        <div>
+                        <div className='text-[12px]'>
                             {location}
                         </div>
                     </div>
                     <div>
-                        <p className='font-thin text-sm'>{dateField}</p>
+                        <p className='font-thin text-[12px]'>{dateField}</p>
                     </div>
                 </div>
             </div>
             <div className='flex justify-center pt-1 pb-5'>
-                <p className='text-3xl font-bold'>{productName}</p>
+                <p className='text-2xl font-bold'>{productName}</p>
             </div>
 
-            <div className=''>
-                <img className='w-full rounded-xl' src={productImage} alt="" />
+            <div className='flex justify-center '>
+                <img className=' rounded-xl w-[70%]' src={productImage} alt="" />
             </div>
 
             <div className=' py-5'>
 
-                <div className='flex justify-between '>
-                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded-xl'>
+                <div className='flex justify-between text-[12px]'>
+                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded'>
                         <span className='text-white font-semibold'>Original Price:</span> <span className='text-white'>${originalPrice}</span>
                     </div>
-                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded-xl'>
+                    <div className='flex justify-between gap-1 bg-green-700 text-white p-2 rounded'>
                         <span className='text-white font-semibold'>Resale Price:</span> <span className='text-white'>${resalePrice}</span>
                     </div>
                 </div>
-                <div className='flex flex-col gap-1 py-7'>
-                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                <div className='flex flex-col gap-1 py-7 text-[12px]'>
+                    <div className='flex justify-between bg-orange-50 px-2 rounded '>
                         <span className='text-gray-900 font-semibold'>Condition:</span> <span className='text-slate-900'>{condition}</span>
                     </div>
-                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                    <div className='flex justify-between bg-orange-50 px-2 rounded '>
                         <span className='text-gray-900 font-semibold'>Purchase Year:</span> <span className='text-slate-900'>{purchaseYear}</span>
                     </div>
-                    <div className='flex justify-between bg-orange-100 px-2 rounded py-1'>
+                    <div className='flex justify-between bg-orange-50 px-2 rounded '>
                         <span className='text-gray-900 font-semibold'>Years of Use:</span> <span className='text-slate-900'>{useOfYear}</span>
                     </div>
                 </div>
 
             </div>
 
-            <div className=" flex gap-5 justify-between mt-auto ">
-                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn  btn-md    lg:w-[50%] px-6 lg:px-6  text-white bg-nav-color   font-semibold  border hover:text-white hover:bg-green-800 hover:border-nav-color rounded">Book Now</label>
-                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-md bg-nav-color text-white     w-full px-4   hover:bg-red-500 hover:border-red-500 font-semibold  border hover:text-white rounded">Report to admin</button></Link>
-                {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
+            <div className=" flex gap-2 justify-between mt-auto text-[14px] ">
+                <label onClick={() => setBooking(book)} htmlFor="my-modal-3" className="btn  btn-sm    lg:w-[40%] w-[50%]   text-white bg-nav-color   font-semibold  border hover:text-white hover:bg-green-800 hover:border-nav-color rounded text-[12px]">Book Now</label>
+                <Link ><button onClick={() => handleReportedItem(_id)} className="btn btn-sm bg-nav-color text-white  w-full px-5  hover:bg-red-500 hover:border-red-500 font-semibold  border hover:text-white rounded text-[12px]">Report to admin</button></Link>
             </div>
 
             {
